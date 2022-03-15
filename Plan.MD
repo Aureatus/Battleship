@@ -23,8 +23,9 @@
     - #### Properties
 
       - Length
+      - shipArray that starts as an empty array the same length as the ships Length.
       - ##### Hit function
-        - Takes a number as an argument, and marks that position as hit on the enemies grid.
+        - Takes a number as an argument, and marks that position as hit.
       - ##### isSunk function
         - Calculates based on length and if all positions of the ship have been hit.
 
