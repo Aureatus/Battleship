@@ -14,3 +14,10 @@ test("shipHit", () => {
   ship.hit(0);
   expect(ship.hitArray[0]).toBe("hit");
 });
+
+test("shipSunk", () => {
+  ship.hitArray.forEach((element, index) => {
+    ship.hit(index);
+  });
+  expect(ship.isSunk()).toBe(true);
+});
