@@ -1,6 +1,10 @@
 const { shipFactory } = require("../modules/ship");
 
-const ship = shipFactory(3);
+let ship;
+
+beforeEach(() => {
+  ship = shipFactory(3);
+});
 
 test("shipLength", () => {
   expect(ship.shipLength).toBe(3);
