@@ -8,5 +8,5 @@ test("shipLength", () => {
 
 test("shipHit", () => {
   ship.hit(0);
-  expect(ship.hitArray[0].toBe("hit"));
+  expect(ship.hitArray[0]).toBe("hit");
 });
