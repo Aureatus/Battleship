@@ -1,6 +1,10 @@
 const shipFactory = (length) => {
   const shipLength = length;
-  return { shipLength };
+  const hitArray = new Array(length);
+  const hit = (location) => {
+    hitArray[location] = "hit";
+  };
+  return { shipLength, hitArray, hit };
 };
 
 exports.shipFactory = shipFactory;
