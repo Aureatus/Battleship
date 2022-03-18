@@ -8,7 +8,6 @@ test("gameBoardCorrectSize", () => {
 
 test("shipPlacement", () => {
   gameBoard.placeShip(5, 4, "D");
-  expect(gameBoard.gameBoardArray.slice(5, 4).every((e) => e === "D")).toBe(
-    true
-  );
+  const arraySlice = gameBoard.gameBoardArray.slice(5, 5 + 4);
+  expect(arraySlice.every((e) => e === "D")).toBe(true);
 });
