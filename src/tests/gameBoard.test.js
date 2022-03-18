@@ -6,8 +6,14 @@ test("gameBoardCorrectSize", () => {
   expect(gameBoard.gameBoardArray.length).toBe(100);
 });
 
-test("shipPlacement", () => {
-  gameBoard.placeShip(5, 4, "D");
+test("shipPlacementHorizontal", () => {
+  gameBoard.placeShip(5, 4, "D", "horizontal");
   const arraySlice = gameBoard.gameBoardArray.slice(5, 5 + 4);
   expect(arraySlice.every((e) => e === "D")).toBe(true);
+});
+
+test("shipPlacementVertical", () => {
+  gameBoard.placeShip(20, 2, "P", "vertical");
+  const arraySlice = gameBoard.gameBoardArray.slice(20, 20 + 2);
+  expect(arraySlice.every((e) => e === "P")).toBe(true);
 });
