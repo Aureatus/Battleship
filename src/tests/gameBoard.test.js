@@ -1,6 +1,10 @@
 const { gameBoardFactory } = require("../modules/gameBoard");
 
-const gameBoard = gameBoardFactory();
+let gameBoard;
+
+beforeEach(() => {
+  gameBoard = gameBoardFactory();
+});
 
 test("gameBoardCorrectSize", () => {
   expect(gameBoard.gameBoardArray.length).toBe(100);
@@ -21,4 +25,9 @@ test("shipPlacementVertical", () => {
     counter += 10;
   }
   expect(arraySlice.every((e) => e === "P")).toBe(true);
+});
+
+test("shipsArray", () => {
+  gameBoard.placeShip(1, 3, "F", "horizontal");
+  expect(gameBoard.ships.length).toBe(1);
 });
