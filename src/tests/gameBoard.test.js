@@ -41,3 +41,7 @@ test("shipPlacementCheckVertical", () => {
   gameBoard.placeShip(15, 4, "A", "vertical");
   expect(() => gameBoard.placeShip(15, 4, "A", "vertical")).toThrow(Error);
 });
+
+test("CoordinateConversion", () => {
+  expect(gameBoard.coordinatesToIndex(3, 5)).toBe(48);
+});
