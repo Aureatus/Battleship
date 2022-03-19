@@ -1,6 +1,11 @@
+const { shipFactory } = require("./ship");
+
 const gameBoardFactory = () => {
   const gameBoardArray = new Array(100).fill("");
+  const ships = [];
   const placeShip = (position, length, tag, orientation) => {
+    ships.push(shipFactory(length));
+
     if (orientation === "horizontal") {
       for (i = position; i < position + length; i++) {
         gameBoardArray[i] = tag;
@@ -14,7 +19,7 @@ const gameBoardFactory = () => {
       }
     }
   };
-  return { gameBoardArray, placeShip };
+  return { gameBoardArray, placeShip, ships };
 };
 
 exports.gameBoardFactory = gameBoardFactory;
