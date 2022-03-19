@@ -69,7 +69,21 @@ const gameBoardFactory = () => {
           }
           counter++;
         }
-        console.log(singularShipArray);
+        ships[shipTag].hit(singularShipArray.indexOf("origin"));
+      }
+      if (orientation === "vertical") {
+        const singularShipArray = [];
+        let counter = 10;
+        singularShipArray.push("origin");
+        while (singularShipArray.length < ships[shipTag].shipLength) {
+          if (gameBoardArray[position + counter] === shipTag) {
+            singularShipArray.push(shipTag);
+          }
+          if (gameBoardArray[position - counter] === shipTag) {
+            singularShipArray.unshift(shipTag);
+          }
+          counter += 10;
+        }
         ships[shipTag].hit(singularShipArray.indexOf("origin"));
       }
     }
