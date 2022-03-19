@@ -14,6 +14,11 @@ test("shipPlacementHorizontal", () => {
 
 test("shipPlacementVertical", () => {
   gameBoard.placeShip(20, 2, "P", "vertical");
-  const arraySlice = gameBoard.gameBoardArray.slice(20, 20 + 2);
+  const arraySlice = [];
+  let counter = 20;
+  for (i = 0; i < 2; i++) {
+    arraySlice.push(gameBoard.gameBoardArray[counter]);
+    counter += 10;
+  }
   expect(arraySlice.every((e) => e === "P")).toBe(true);
 });
