@@ -2,7 +2,7 @@ const { shipFactory } = require("./ship");
 
 const gameBoardFactory = () => {
   const gameBoardArray = new Array(100).fill("");
-  const ships = [];
+  const ships = {};
   const coordinatesToIndex = (x, y) => {
     let currentX = 0;
     let currentY = 0;
@@ -30,7 +30,7 @@ const gameBoardFactory = () => {
           );
         }
       }
-      ships.push(shipFactory(length));
+      ships[tag] = shipFactory(length);
       for (i = position; i < position + length; i++) {
         gameBoardArray[i] = tag;
       }
@@ -46,7 +46,7 @@ const gameBoardFactory = () => {
         counter += 10;
       }
       counter = position;
-      ships.push(shipFactory(length));
+      ships[tag] = shipFactory(length);
       for (i = position; i < position + length; i++) {
         gameBoardArray[counter] = tag;
         counter += 10;
