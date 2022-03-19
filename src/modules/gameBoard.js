@@ -7,6 +7,11 @@ const gameBoardFactory = () => {
       }
     }
     if (orientation === "vertical") {
+      let counter = position;
+      for (i = position; i < position + length; i++) {
+        gameBoardArray[counter] = tag;
+        counter += 10;
+      }
     }
   };
   return { gameBoardArray, placeShip };
