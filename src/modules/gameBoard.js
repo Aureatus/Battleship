@@ -3,6 +3,24 @@ const { shipFactory } = require("./ship");
 const gameBoardFactory = () => {
   const gameBoardArray = new Array(100).fill("");
   const ships = [];
+  const coordinatesToIndex = (x, y) => {
+    let currentX = 0;
+    let currentY = 0;
+    let indexValue = 0;
+
+    while (currentY < y) {
+      for (i = 0; i < 9; i++) {
+        indexValue++;
+      }
+      currentY++;
+    }
+    while (currentX < x) {
+      indexValue++;
+      currentX++;
+    }
+    return indexValue;
+  };
+
   const placeShip = (position, length, tag, orientation) => {
     if (orientation === "horizontal") {
       for (i = position; i < position + length; i++) {
@@ -35,7 +53,7 @@ const gameBoardFactory = () => {
       }
     }
   };
-  return { gameBoardArray, placeShip, ships };
+  return { gameBoardArray, placeShip, ships, coordinatesToIndex };
 };
 
 exports.gameBoardFactory = gameBoardFactory;
