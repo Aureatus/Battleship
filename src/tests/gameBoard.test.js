@@ -45,3 +45,8 @@ test("shipPlacementCheckVertical", () => {
 test("CoordinateConversion", () => {
   expect(gameBoard.coordinatesToIndex(3, 5)).toBe(48);
 });
+
+test("recieveAttackHit", () => {
+  gameBoard.placeShip(15, 4, "A", "horizontal");
+  gameBoard.receiveAttack(15);
+});
