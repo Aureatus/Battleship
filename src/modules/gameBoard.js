@@ -53,7 +53,34 @@ const gameBoardFactory = () => {
       }
     }
   };
-  return { gameBoardArray, placeShip, ships, coordinatesToIndex };
+  const receiveAttack = (position, orientation) => {
+    if (gameBoardArray[position] != "") {
+      shipTag = gameBoardArray[position];
+      if (orientation === "horizontal") {
+        const singularShipArray = [];
+        let counter = 1;
+        singularShipArray.push("origin");
+        while (singularShipArray.length < ships[shipTag].shipLength) {
+          if (gameBoardArray[position + counter] === shipTag) {
+            singularShipArray.push(shipTag);
+          }
+          if (gameBoardArray[position - counter] === shipTag) {
+            singularShipArray.unshift(shipTag);
+          }
+          counter++;
+        }
+        console.log(singularShipArray);
+        ships[shipTag].hit(singularShipArray.indexOf("origin"));
+      }
+    }
+  };
+  return {
+    gameBoardArray,
+    placeShip,
+    ships,
+    coordinatesToIndex,
+    receiveAttack,
+  };
 };
 
 exports.gameBoardFactory = gameBoardFactory;
