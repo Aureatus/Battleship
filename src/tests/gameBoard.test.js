@@ -31,3 +31,8 @@ test("shipsArray", () => {
   gameBoard.placeShip(1, 3, "F", "horizontal");
   expect(gameBoard.ships.length).toBe(1);
 });
+
+test("shipPlacementCheckHorizontal", () => {
+  gameBoard.placeShip(15, 4, "A", "horizontal");
+  expect(() => gameBoard.placeShip(15, 4, "A", "horizontal")).toThrow(Error);
+});
