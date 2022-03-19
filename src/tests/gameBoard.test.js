@@ -53,7 +53,7 @@ test("receiveAttackHorizontal", () => {
 });
 
 test("receiveAttackVertical", () => {
-  gameBoard.placeShip(4, 4, "A", "vertical");
-  gameBoard.receiveAttack(13, "vertical");
+  gameBoard.placeShip(0, 4, "A", "vertical");
+  gameBoard.receiveAttack(20, "vertical");
   expect(gameBoard.ships["A"].hitArray[2]).toBe("hit");
 });
