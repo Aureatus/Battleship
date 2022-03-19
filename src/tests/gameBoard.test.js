@@ -36,3 +36,8 @@ test("shipPlacementCheckHorizontal", () => {
   gameBoard.placeShip(15, 4, "A", "horizontal");
   expect(() => gameBoard.placeShip(15, 4, "A", "horizontal")).toThrow(Error);
 });
+
+test("shipPlacementCheckVertical", () => {
+  gameBoard.placeShip(15, 4, "A", "vertical");
+  expect(() => gameBoard.placeShip(15, 4, "A", "vertical")).toThrow(Error);
+});
