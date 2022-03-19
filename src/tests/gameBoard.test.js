@@ -46,7 +46,8 @@ test("CoordinateConversion", () => {
   expect(gameBoard.coordinatesToIndex(3, 5)).toBe(48);
 });
 
-test("recieveAttackHit", () => {
-  gameBoard.placeShip(15, 4, "A", "horizontal");
-  gameBoard.receiveAttack(15);
+test("receiveAttackHit", () => {
+  gameBoard.placeShip(13, 4, "A", "horizontal");
+  gameBoard.receiveAttack(15, "horizontal");
+  expect(gameBoard.ships["A"].hitArray[2]).toBe("hit");
 });
