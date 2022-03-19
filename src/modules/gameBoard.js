@@ -19,6 +19,15 @@ const gameBoardFactory = () => {
     }
     if (orientation === "vertical") {
       let counter = position;
+      for (i = position; i < position + length; i++) {
+        if (gameBoardArray[counter] != "") {
+          throw new Error(
+            `You are trying to place a ship where there is already one.`
+          );
+        }
+        counter += 10;
+      }
+      counter = position;
       ships.push(shipFactory(length));
       for (i = position; i < position + length; i++) {
         gameBoardArray[counter] = tag;
