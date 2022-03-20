@@ -86,6 +86,8 @@ const gameBoardFactory = () => {
         }
         ships[shipTag].hit(singularShipArray.indexOf("origin"));
       }
+    } else if (gameBoardArray[position] === "") {
+      gameBoardArray[position] = "miss";
     }
   };
   return {
