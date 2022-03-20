@@ -69,8 +69,8 @@ test("areShipsSunk", () => {
   gameBoard.placeShip(10, 3, "B", "vertical");
   gameBoard.receiveAttack(0, "horizontal");
   gameBoard.receiveAttack(1, "horizontal");
-  gameBoard.receiveAttack(10, "horizontal");
-  gameBoard.receiveAttack(20, "horizontal");
-  gameBoard.receiveAttack(30, "horizontal");
+  gameBoard.receiveAttack(10, "vertical");
+  gameBoard.receiveAttack(20, "vertical");
+  gameBoard.receiveAttack(30, "vertical");
   expect(gameBoard.shipsSunk()).toBe(true);
 });
