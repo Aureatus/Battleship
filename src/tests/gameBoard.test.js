@@ -48,29 +48,29 @@ test("CoordinateConversion", () => {
 
 test("receiveAttackHorizontal", () => {
   gameBoard.placeShip(13, 4, "A", "horizontal");
-  gameBoard.receiveAttack(15, "horizontal");
+  gameBoard.receiveAttack(15);
   expect(gameBoard.ships["A"].hitArray[2]).toBe("hit");
 });
 
 test("receiveAttackVertical", () => {
   gameBoard.placeShip(0, 4, "A", "vertical");
-  gameBoard.receiveAttack(20, "vertical");
+  gameBoard.receiveAttack(20);
   expect(gameBoard.ships["A"].hitArray[2]).toBe("hit");
 });
 
 test("receiveAttackMiss", () => {
   gameBoard.placeShip(0, 4, "S", "horizontal");
-  gameBoard.receiveAttack(35, "horizontal");
+  gameBoard.receiveAttack(35);
   expect(gameBoard.gameBoardArray[35]).toBe("miss");
 });
 
 test("areShipsSunk", () => {
   gameBoard.placeShip(0, 2, "A", "horizontal");
   gameBoard.placeShip(10, 3, "B", "vertical");
-  gameBoard.receiveAttack(0, "horizontal");
-  gameBoard.receiveAttack(1, "horizontal");
-  gameBoard.receiveAttack(10, "vertical");
-  gameBoard.receiveAttack(20, "vertical");
-  gameBoard.receiveAttack(30, "vertical");
+  gameBoard.receiveAttack(0);
+  gameBoard.receiveAttack(1);
+  gameBoard.receiveAttack(10);
+  gameBoard.receiveAttack(20);
+  gameBoard.receiveAttack(30);
   expect(gameBoard.shipsSunk()).toBe(true);
 });
