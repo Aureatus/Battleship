@@ -63,3 +63,14 @@ test("receiveAttackMiss", () => {
   gameBoard.receiveAttack(35, "horizontal");
   expect(gameBoard.gameBoardArray[35]).toBe("miss");
 });
+
+test("areShipsSunk", () => {
+  gameBoard.placeShip(0, 2, "A", "horizontal");
+  gameBoard.placeShip(10, 3, "B", "vertical");
+  gameBoard.receiveAttack(0, "horizontal");
+  gameBoard.receiveAttack(1, "horizontal");
+  gameBoard.receiveAttack(10, "horizontal");
+  gameBoard.receiveAttack(20, "horizontal");
+  gameBoard.receiveAttack(30, "horizontal");
+  expect(gameBoard.shipsSunk()).toBe(true);
+});
