@@ -6,6 +6,17 @@ const player = (gameboard, enemygameboard, type) => {
     };
     return { attackEnemyGameboard };
   }
+  if (type === "computer") {
+    const attackEnemyGameboard = () => {
+      let position = Math.floor(Math.random() * 100);
+      while (enemygameboard.gameBoardArray[position] != "") {
+        position = Math.floor(Math.random() * 100);
+      }
+      enemygameboard.receiveAttack(position);
+      return position;
+    };
+    return { attackEnemyGameboard };
+  }
 };
 
 exports.player = player;
