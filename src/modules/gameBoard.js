@@ -90,12 +90,21 @@ const gameBoardFactory = () => {
       gameBoardArray[position] = "miss";
     }
   };
+  const shipsSunk = () => {
+    const sunkTracker = [];
+    for (key in ships) {
+      let sunkStatus = ships[key].isSunk();
+      sunkTracker.push(sunkStatus);
+    }
+    return sunkTracker.every((e) => e === true);
+  };
   return {
     gameBoardArray,
     placeShip,
     ships,
     coordinatesToIndex,
     receiveAttack,
+    shipsSunk,
   };
 };
 
