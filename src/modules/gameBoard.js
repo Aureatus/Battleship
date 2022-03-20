@@ -53,39 +53,22 @@ const gameBoardFactory = () => {
       }
     }
   };
-  const receiveAttack = (position, orientation) => {
+  const receiveAttack = (position) => {
     if (gameBoardArray[position] != "") {
       shipTag = gameBoardArray[position];
-      if (orientation === "horizontal") {
-        const singularShipArray = [];
-        let counter = 1;
-        singularShipArray.push("origin");
-        while (singularShipArray.length < ships[shipTag].shipLength) {
-          if (gameBoardArray[position + counter] === shipTag) {
-            singularShipArray.push(shipTag);
-          }
-          if (gameBoardArray[position - counter] === shipTag) {
-            singularShipArray.unshift(shipTag);
-          }
-          counter++;
+      const singularShipArray = [];
+      let counter = 1;
+      singularShipArray.push("origin");
+      while (singularShipArray.length < ships[shipTag].shipLength) {
+        if (gameBoardArray[position + counter] === shipTag) {
+          singularShipArray.push(shipTag);
         }
-        ships[shipTag].hit(singularShipArray.indexOf("origin"));
-      }
-      if (orientation === "vertical") {
-        const singularShipArray = [];
-        let counter = 10;
-        singularShipArray.push("origin");
-        while (singularShipArray.length < ships[shipTag].shipLength) {
-          if (gameBoardArray[position + counter] === shipTag) {
-            singularShipArray.push(shipTag);
-          }
-          if (gameBoardArray[position - counter] === shipTag) {
-            singularShipArray.unshift(shipTag);
-          }
-          counter += 10;
+        if (gameBoardArray[position - counter] === shipTag) {
+          singularShipArray.unshift(shipTag);
         }
-        ships[shipTag].hit(singularShipArray.indexOf("origin"));
+        counter++;
       }
+      ships[shipTag].hit(singularShipArray.indexOf("origin"));
     } else if (gameBoardArray[position] === "") {
       gameBoardArray[position] = "miss";
     }
