@@ -2,6 +2,7 @@ const { shipFactory } = require("./ship");
 
 const gameBoardFactory = () => {
   const gameBoardArray = new Array(100).fill("");
+  const unModifiedgameBoardArray = new Array(100).fill("");
   const ships = {};
   const coordinatesToIndex = (x, y) => {
     let currentX = 0;
@@ -33,6 +34,7 @@ const gameBoardFactory = () => {
       ships[tag] = shipFactory(length);
       for (i = position; i < position + length; i++) {
         gameBoardArray[i] = tag;
+        unModifiedgameBoardArray[i] = tag;
       }
     }
     if (orientation === "vertical") {
@@ -49,27 +51,34 @@ const gameBoardFactory = () => {
       ships[tag] = shipFactory(length);
       for (i = position; i < position + length; i++) {
         gameBoardArray[counter] = tag;
+        unModifiedgameBoardArray[counter] = tag;
         counter += 10;
       }
     }
   };
   const receiveAttack = (position) => {
-    if (gameBoardArray[position] != "") {
+    if (
+      (gameBoardArray[position] != "") &
+      ((gameBoardArray[position] != "miss") &
+        (gameBoardArray[position] != "hit"))
+    ) {
       shipTag = gameBoardArray[position];
       const singularShipArray = [];
       let counter = 1;
       singularShipArray.push("origin");
       while (singularShipArray.length < ships[shipTag].shipLength) {
-        if (gameBoardArray[position + counter] === shipTag) {
+        if (unModifiedgameBoardArray[position + counter] === shipTag) {
           singularShipArray.push(shipTag);
         }
-        if (gameBoardArray[position - counter] === shipTag) {
+        if (unModifiedgameBoardArray[position - counter] === shipTag) {
           singularShipArray.unshift(shipTag);
         }
         counter++;
       }
       ships[shipTag].hit(singularShipArray.indexOf("origin"));
-    } else if (gameBoardArray[position] === "") {
+      gameBoardArray[position] = "hit";
+    }
+    if (gameBoardArray[position] === "") {
       gameBoardArray[position] = "miss";
     }
   };
@@ -83,6 +92,7 @@ const gameBoardFactory = () => {
   };
   return {
     gameBoardArray,
+    unModifiedgameBoardArray,
     placeShip,
     ships,
     coordinatesToIndex,
