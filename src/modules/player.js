@@ -1,8 +1,12 @@
 const player = (gameboard, enemygameboard, type) => {
   if (type === "human") {
-    const attackEnemyGameboard = (x, y) => {
-      let position = gameboard.coordinatesToIndex(x, y);
-      enemygameboard.receiveAttack(position);
+    const attackEnemyGameboard = (x, y, index) => {
+      if (x != undefined || y != undefined) {
+        let position = gameboard.coordinatesToIndex(x, y);
+        enemygameboard.receiveAttack(position);
+      } else {
+        enemygameboard.receiveAttack(position);
+      }
     };
     return { attackEnemyGameboard };
   }
