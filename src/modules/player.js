@@ -4,8 +4,9 @@ const player = (gameboard, enemygameboard, type) => {
       if (x != undefined || y != undefined) {
         let position = gameboard.coordinatesToIndex(x, y);
         enemygameboard.receiveAttack(position);
-      } else {
-        enemygameboard.receiveAttack(position);
+      }
+      if (index) {
+        enemygameboard.receiveAttack(index);
       }
     };
     return { attackEnemyGameboard };
