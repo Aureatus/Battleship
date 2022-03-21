@@ -13,6 +13,7 @@ const domMethods = () => {
     Array.from(grid.children).forEach((element, index) => {
       element.addEventListener("click", () => {
         attackEnemyGameboard(undefined, undefined, index);
+        generateGrid(gameBoard, number);
       });
     });
   };
