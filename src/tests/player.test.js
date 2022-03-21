@@ -5,8 +5,8 @@ test("attackEnemyGameboardHuman", () => {
   const gameboard1 = gameBoardFactory();
   const gameboard2 = gameBoardFactory();
   const player1 = player(gameboard1, gameboard2, "human");
-  player1.attackEnemyGameboard(5);
-  expect(gameboard2.gameBoardArray[5]).toBe("miss");
+  player1.attackEnemyGameboard(0, 0);
+  expect(gameboard2.gameBoardArray[0]).toBe("miss");
 });
 
 test("attackEnemyGameboardComputer", () => {
