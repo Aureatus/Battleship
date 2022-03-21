@@ -39,6 +39,8 @@ const gameFactory = () => {
   }
   domMethods().generateGrid(gameBoard1, 0);
   domMethods().generateGrid(gameBoard2, 1);
+
+  domMethods().attackListener(gameBoard2, 1, player1.attackEnemyGameboard);
 };
 
 gameFactory();
