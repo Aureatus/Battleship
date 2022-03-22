@@ -12,21 +12,33 @@ const domMethods = () => {
       grid.appendChild(div);
     });
   };
+  let unalteredGameBoard;
+
   const attackListener = (gameBoard, number, attackEnemyGameboard) => {
     const grid = document.querySelector("main").children[number].children[0];
     Array.from(grid.children).forEach((element, index) => {
       element.addEventListener("click", () => {
-        let unalteredGameBoard = gameBoard.gameBoardArray.slice();
+        unalteredGameBoard = gameBoard.gameBoardArray.slice();
         attackEnemyGameboard(undefined, undefined, index);
-        unalteredGameBoard.forEach((element, index) => {
-          if (unalteredGameBoard[index] != gameBoard.gameBoardArray[index]) {
-            grid.children[index].textContent = gameBoard.gameBoardArray[index];
-          }
-        });
+        gridChangeRender(gameBoard, number);
       });
     });
   };
-  return { generateGrid, attackListener };
+
+  const computerAttack = (gameBoard, number, attackEnemyGameboard) => {
+    unalteredGameBoard = gameBoard.gameBoardArray.slice();
+    attackEnemyGameboard();
+    gridChangeRender(gameBoard, number);
+  };
+  const gridChangeRender = (gameBoard, number) => {
+    unalteredGameBoard.forEach((element, index) => {
+      const grid = document.querySelector("main").children[number].children[0];
+      if (unalteredGameBoard[index] != gameBoard.gameBoardArray[index]) {
+        grid.children[index].textContent = gameBoard.gameBoardArray[index];
+      }
+    });
+  };
+  return { generateGrid, attackListener, computerAttack };
 };
 
 exports.domMethods = domMethods;
