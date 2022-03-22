@@ -14,13 +14,12 @@ const domMethods = () => {
   };
   let unalteredGameBoard;
 
-  const attackListener = (gameBoard, number, attackEnemyGameboard) => {
+  const attackListener = (number, inputAttack, gameBoard) => {
     const grid = document.querySelector("main").children[number].children[0];
     Array.from(grid.children).forEach((element, index) => {
       element.addEventListener("click", () => {
         unalteredGameBoard = gameBoard.gameBoardArray.slice();
-        attackEnemyGameboard(undefined, undefined, index);
-        gridChangeRender(gameBoard, number);
+        inputAttack(index, unalteredGameBoard);
       });
     });
   };
@@ -28,9 +27,9 @@ const domMethods = () => {
   const computerAttack = (gameBoard, number, attackEnemyGameboard) => {
     unalteredGameBoard = gameBoard.gameBoardArray.slice();
     attackEnemyGameboard();
-    gridChangeRender(gameBoard, number);
+    gridChangeRender(gameBoard, number, unalteredGameBoard);
   };
-  const gridChangeRender = (gameBoard, number) => {
+  const gridChangeRender = (gameBoard, number, unalteredGameBoard) => {
     unalteredGameBoard.forEach((element, index) => {
       const grid = document.querySelector("main").children[number].children[0];
       if (unalteredGameBoard[index] != gameBoard.gameBoardArray[index]) {
@@ -38,7 +37,7 @@ const domMethods = () => {
       }
     });
   };
-  return { generateGrid, attackListener, computerAttack };
+  return { generateGrid, attackListener, computerAttack, gridChangeRender };
 };
 
 exports.domMethods = domMethods;
