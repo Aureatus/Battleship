@@ -56,12 +56,23 @@ const gameFactory = () => {
   domMethods().generateGrid(gameBoard1, 0);
   domMethods().generateGrid(gameBoard2, 1);
 
-  const inputAttack = (index, unalteredGameBoard) => {
+  const inputAttack = (index, unalteredGameBoard1) => {
     player1.attackEnemyGameboard(undefined, undefined, index);
-    domMethods().gridChangeRender(gameBoard2, 1, unalteredGameBoard);
+    domMethods().gridChangeRender(gameBoard2, 1, unalteredGameBoard1);
   };
-  domMethods().attackListener(1, inputAttack, gameBoard2);
-  domMethods().computerAttack(gameBoard1, 0, player2.attackEnemyGameboard);
+  const computerAttack = (index, unalteredGameBoard2) => {
+    player2.attackEnemyGameboard();
+    domMethods().gridChangeRender(gameBoard1, 0, unalteredGameBoard2);
+  };
+  domMethods().attackListener(
+    1,
+    inputAttack,
+    gameBoard2,
+    2,
+    gameBoard1,
+    computerAttack,
+    isGameOver
+  );
 };
 
 gameFactory();
