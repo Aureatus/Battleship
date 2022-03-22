@@ -10,7 +10,7 @@ const gameBoardFactory = () => {
     let indexValue = 0;
 
     while (currentY < y) {
-      for (i = 0; i < 9; i++) {
+      for (i = 0; i <= 9; i++) {
         indexValue++;
       }
       currentY++;
