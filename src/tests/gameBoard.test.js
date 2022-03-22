@@ -43,7 +43,7 @@ test("shipPlacementCheckVertical", () => {
 });
 
 test("CoordinateConversion", () => {
-  expect(gameBoard.coordinatesToIndex(3, 5)).toBe(48);
+  expect(gameBoard.coordinatesToIndex(3, 5)).toBe(53);
 });
 
 test("receiveAttackHorizontal", () => {
