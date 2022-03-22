@@ -12,23 +12,45 @@ const domMethods = () => {
       grid.appendChild(div);
     });
   };
-  let unalteredGameBoard;
+  let unalteredGameBoard1;
+  let unalteredGameBoard2;
 
-  const attackListener = (number, inputAttack, gameBoard) => {
-    const grid = document.querySelector("main").children[number].children[0];
+  const attackListener = (
+    number1,
+    inputAttack,
+    gameBoard2,
+    number2,
+    gameBoard1,
+    computerAttack,
+    isGameOver
+  ) => {
+    const grid = document.querySelector("main").children[number1].children[0];
     Array.from(grid.children).forEach((element, index) => {
       element.addEventListener("click", () => {
-        unalteredGameBoard = gameBoard.gameBoardArray.slice();
-        inputAttack(index, unalteredGameBoard);
+        unalteredGameBoard1 = gameBoard2.gameBoardArray.slice();
+        if (
+          gameBoard2.gameBoardArray[index] === "miss" ||
+          gameBoard2.gameBoardArray[index] === "hit"
+        ) {
+          return;
+        }
+        inputAttack(index, unalteredGameBoard1);
+        if (isGameOver().finishedGameBoard) {
+          console.log("game over!");
+          return;
+        }
+        unalteredGameBoard2 = gameBoard1.gameBoardArray.slice();
+        setTimeout(() => {
+          computerAttack(index, unalteredGameBoard2);
+        }, 500);
+        if (isGameOver().finishedGameBoard) {
+          console.log("game over!");
+          return;
+        }
       });
     });
   };
 
-  const computerAttack = (gameBoard, number, attackEnemyGameboard) => {
-    unalteredGameBoard = gameBoard.gameBoardArray.slice();
-    attackEnemyGameboard();
-    gridChangeRender(gameBoard, number, unalteredGameBoard);
-  };
   const gridChangeRender = (gameBoard, number, unalteredGameBoard) => {
     unalteredGameBoard.forEach((element, index) => {
       const grid = document.querySelector("main").children[number].children[0];
@@ -37,7 +59,7 @@ const domMethods = () => {
       }
     });
   };
-  return { generateGrid, attackListener, computerAttack, gridChangeRender };
+  return { generateGrid, attackListener, gridChangeRender };
 };
 
 exports.domMethods = domMethods;
