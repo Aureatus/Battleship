@@ -14,7 +14,10 @@ const player = (gameboard, enemygameboard, type) => {
   if (type === "computer") {
     const attackEnemyGameboard = () => {
       let position = Math.floor(Math.random() * 100);
-      while (enemygameboard.gameBoardArray[position] != "") {
+      while (
+        enemygameboard.gameBoardArray[position] === "miss" ||
+        enemygameboard.gameBoardArray[position] === "hit"
+      ) {
         position = Math.floor(Math.random() * 100);
       }
       enemygameboard.receiveAttack(position);
