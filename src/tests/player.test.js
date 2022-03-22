@@ -23,5 +23,5 @@ test("attackEnemyGameboardHumanHit", () => {
 test("attackEnemyGameboardComputer", () => {
   const player1 = player(gameboard1, gameboard2, "computer");
   let position = player1.attackEnemyGameboard();
-  expect(gameboard2.gameBoardArray[position]).toBe("miss");
+  expect(gameboard2.gameBoardArray[position]).toBe("miss" || "hit");
 });
