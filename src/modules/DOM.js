@@ -12,6 +12,48 @@ const domMethods = () => {
     });
   };
 
+  const shipPlacementInterfaceGenerator = () => {
+    const player1Area = document.querySelector(".player1");
+    const placementInterface = document.createElement("div");
+    placementInterface.classList.add("placementInterface");
+    const title = document.createElement("h2");
+    title.textContent = "Place ships";
+    placementInterface.appendChild(title);
+    const currentShip = document.createElement("h3");
+    placementInterface.appendChild(currentShip);
+    const form = document.createElement("form");
+    form.classList.add("coordinateForm");
+    const x = document.createElement("div");
+    x.classList.add("x-coordinate");
+    const xLabel = document.createElement("label");
+    xLabel.textContent = "X-coordinate";
+    const xInput = document.createElement("input");
+    xInput.type = "number";
+    xInput.max = 9;
+    xInput.min = 0;
+    xInput.required = true;
+    x.appendChild(xLabel);
+    x.appendChild(xInput);
+    form.appendChild(x);
+    const y = document.createElement("div");
+    y.classList.add("y-coordinate");
+    const yLabel = document.createElement("label");
+    yLabel.textContent = "Y-coordinate";
+    const yInput = document.createElement("input");
+    yInput.type = "number";
+    yInput.max = 9;
+    yInput.min = 0;
+    yInput.required = true;
+    y.appendChild(yLabel);
+    y.appendChild(yInput);
+    form.appendChild(y);
+    const submit = document.createElement("input");
+    submit.type = "submit";
+    form.appendChild(submit);
+    placementInterface.appendChild(form);
+    player1Area.appendChild(placementInterface);
+  };
+
   const clearBoard = () => {
     const grid1 = document.querySelector("main").children[0].children[0];
     const grid2 = document.querySelector("main").children[1].children[0];
@@ -91,7 +133,12 @@ const domMethods = () => {
       }
     });
   };
-  return { generateGrid, attackListener, gridChangeRender };
+  return {
+    generateGrid,
+    attackListener,
+    gridChangeRender,
+    shipPlacementInterfaceGenerator,
+  };
 };
 
 exports.domMethods = domMethods;
