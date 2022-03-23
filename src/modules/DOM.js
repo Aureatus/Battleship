@@ -2,7 +2,6 @@ const domMethods = () => {
   const body = document.body;
   const generateGrid = (gameBoard, number) => {
     const grid = document.querySelector("main").children[number].children[0];
-    console.log(grid.children.length);
     if (grid.children.length > 0) {
       Array.from(grid.children).forEach((e) => e.remove());
     }
