@@ -12,6 +12,19 @@ const domMethods = () => {
       grid.appendChild(div);
     });
   };
+
+  const clearBoard = () => {
+    const grid1 = document.querySelector("main").children[0].children[0];
+    const grid2 = document.querySelector("main").children[1].children[0];
+    const removeAllChildren = (parent) => {
+      while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+      }
+    };
+    removeAllChildren(grid1);
+    removeAllChildren(grid2);
+  };
+
   let unalteredGameBoard1;
   let unalteredGameBoard2;
 
@@ -21,7 +34,8 @@ const domMethods = () => {
     gameBoard1,
     player1Attack,
     player2Attack,
-    isGameOver
+    isGameOver,
+    gameOver
   ) => {
     const grid =
       document.querySelector("main").children[gridForEventListeners]
@@ -38,7 +52,8 @@ const domMethods = () => {
         player1Attack(undefined, undefined, index);
         gridChangeRender(gameBoard2, 1, unalteredGameBoard1);
         if (isGameOver().finishedGameBoard) {
-          console.log("game over!");
+          clearBoard();
+          gameOver();
           return;
         }
         unalteredGameBoard2 = gameBoard1.gameBoardArray.slice();
@@ -47,7 +62,9 @@ const domMethods = () => {
           gridChangeRender(gameBoard1, 0, unalteredGameBoard2);
         }, 300);
         if (isGameOver().finishedGameBoard) {
-          console.log("game over!");
+          clearBoard();
+          gameOver();
+
           return;
         }
       });
