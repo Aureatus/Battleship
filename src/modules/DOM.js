@@ -24,6 +24,22 @@ const domMethods = () => {
     removeAllChildren(grid2);
   };
 
+  const gameEndScreen = (gameOver, finishedGameBoard) => {
+    const dialog = body.querySelector(".container > main > dialog");
+    if (finishedGameBoard === "gameBoard1") {
+      dialog.querySelector(".Winner-name").textContent = "Player 2";
+    }
+    if (finishedGameBoard === "gameBoard2") {
+      dialog.querySelector(".Winner-name").textContent = "Player 1";
+    }
+    dialog.showModal();
+    dialog.querySelector("button").addEventListener("click", () => {
+      clearBoard();
+      gameOver();
+      dialog.close();
+    });
+  };
+
   let unalteredGameBoard1;
   let unalteredGameBoard2;
 
@@ -51,8 +67,7 @@ const domMethods = () => {
         player1Attack(undefined, undefined, index);
         gridChangeRender(gameBoard2, 1, unalteredGameBoard1);
         if (isGameOver().finishedGameBoard) {
-          clearBoard();
-          gameOver();
+          gameEndScreen(gameOver, isGameOver().finishedGameBoard);
           return;
         }
         unalteredGameBoard2 = gameBoard1.gameBoardArray.slice();
@@ -61,9 +76,7 @@ const domMethods = () => {
           gridChangeRender(gameBoard1, 0, unalteredGameBoard2);
         }, 300);
         if (isGameOver().finishedGameBoard) {
-          clearBoard();
-          gameOver();
-
+          gameEndScreen(gameOver, isGameOver().finishedGameBoard);
           return;
         }
       });
