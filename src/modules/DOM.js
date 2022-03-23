@@ -12,6 +12,12 @@ const domMethods = () => {
     });
   };
 
+  const removeAllChildren = (parent) => {
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+    }
+  };
+
   const shipPlacementInterfaceGenerator = () => {
     const player1Area = document.querySelector(".player1");
     const placementInterface = document.createElement("div");
@@ -54,14 +60,88 @@ const domMethods = () => {
     player1Area.appendChild(placementInterface);
   };
 
+  const clearshipPlacementInterfaceGenerator = () => {
+    document.querySelector(".placementInterface").remove();
+  };
+
+  const shipPlacement = (
+    gameBoard,
+    codeToExecute,
+    gridForEventListeners,
+    gameBoard2,
+    gameBoard1,
+    player1Attack,
+    player2Attack,
+    isGameOver,
+    gameOver
+  ) => {
+    let shipLetter;
+    let shipLength;
+    let counter = 0;
+    let shipOrientation = "horizontal";
+    const coordinateForm = document.querySelector(".coordinateForm");
+    const shipFunction = (gameBoard) => {
+      const xCoordinate = coordinateForm.elements[0].value;
+      const yCoordinate = coordinateForm.elements[1].value;
+      switch (counter) {
+        case 0:
+          shipLetter = "C";
+          shipLength = 5;
+          break;
+        case 1:
+          shipLetter = "B";
+          shipLength = 4;
+          break;
+        case 2:
+          shipLetter = "D";
+          shipLength = 3;
+          break;
+        case 3:
+          shipLetter = "S";
+          shipLength = 3;
+          break;
+        case 4:
+          shipLetter = "P";
+          shipLength = 2;
+          break;
+        default:
+          break;
+      }
+      gameBoard.placeShip(
+        gameBoard.coordinatesToIndex(xCoordinate, yCoordinate),
+        shipLength,
+        shipLetter,
+        shipOrientation
+      );
+      counter++;
+      console.log(counter);
+    };
+    coordinateForm.addEventListener("submit", function handler(e) {
+      e.preventDefault();
+      shipFunction(gameBoard);
+      const grid1 = document.querySelector("main").children[0].children[0];
+      removeAllChildren(grid1);
+      generateGrid(gameBoard, 0);
+      if (counter === 5) {
+        counter = 0;
+        coordinateForm.removeEventListener("submit", handler);
+        clearshipPlacementInterfaceGenerator();
+        codeToExecute(
+          gridForEventListeners,
+          gameBoard2,
+          gameBoard1,
+          player1Attack,
+          player2Attack,
+          isGameOver,
+          gameOver
+        );
+      }
+    });
+  };
+
   const clearBoard = () => {
     const grid1 = document.querySelector("main").children[0].children[0];
     const grid2 = document.querySelector("main").children[1].children[0];
-    const removeAllChildren = (parent) => {
-      while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-      }
-    };
     removeAllChildren(grid1);
     removeAllChildren(grid2);
   };
@@ -75,11 +155,14 @@ const domMethods = () => {
       dialog.querySelector(".Winner-name").textContent = "Player 1";
     }
     dialog.showModal();
-    dialog.querySelector("button").addEventListener("click", () => {
-      clearBoard();
-      gameOver();
-      dialog.close();
-    });
+    dialog
+      .querySelector("button")
+      .addEventListener("click", function handler2(e) {
+        clearBoard();
+        gameOver();
+        dialog.close();
+        dialog.querySelector("button").removeEventListener("click", handler2);
+      });
   };
 
   let unalteredGameBoard1;
@@ -138,6 +221,7 @@ const domMethods = () => {
     attackListener,
     gridChangeRender,
     shipPlacementInterfaceGenerator,
+    shipPlacement,
   };
 };
 
