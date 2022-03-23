@@ -16,19 +16,16 @@ const gameFactory = () => {
   const player2 = player(gameBoard2, gameBoard1, "computer");
 
   const isGameOver = () => {
-    let finishedGameBoardShipState;
     let finishedGameBoard = false;
 
     if (gameBoard1.shipsSunk() === true) {
-      finishedGameBoard = gameBoard1;
-      finishedGameBoardShipState = finishedGameBoard.shipsSunk();
+      finishedGameBoard = "gameBoard1";
     }
     if (gameBoard2.shipsSunk() === true) {
-      finishedGameBoard = gameBoard2;
-      finishedGameBoardShipState = finishedGameBoard.shipsSunk();
+      finishedGameBoard = "gameBoard2";
     }
 
-    return { finishedGameBoardShipState, finishedGameBoard };
+    return { finishedGameBoard };
   };
   for (let i = 1; i <= 2; i++) {
     let gameboard;
