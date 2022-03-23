@@ -16,15 +16,16 @@ const domMethods = () => {
   let unalteredGameBoard2;
 
   const attackListener = (
-    number1,
-    inputAttack,
+    gridForEventListeners,
     gameBoard2,
-    number2,
     gameBoard1,
-    computerAttack,
+    player1Attack,
+    player2Attack,
     isGameOver
   ) => {
-    const grid = document.querySelector("main").children[number1].children[0];
+    const grid =
+      document.querySelector("main").children[gridForEventListeners]
+        .children[0];
     Array.from(grid.children).forEach((element, index) => {
       element.addEventListener("click", () => {
         unalteredGameBoard1 = gameBoard2.gameBoardArray.slice();
@@ -34,15 +35,17 @@ const domMethods = () => {
         ) {
           return;
         }
-        inputAttack(index, unalteredGameBoard1);
+        player1Attack(undefined, undefined, index);
+        gridChangeRender(gameBoard2, 1, unalteredGameBoard1);
         if (isGameOver().finishedGameBoard) {
           console.log("game over!");
           return;
         }
         unalteredGameBoard2 = gameBoard1.gameBoardArray.slice();
         setTimeout(() => {
-          computerAttack(index, unalteredGameBoard2);
-        }, 500);
+          player2Attack();
+          gridChangeRender(gameBoard1, 0, unalteredGameBoard2);
+        }, 300);
         if (isGameOver().finishedGameBoard) {
           console.log("game over!");
           return;
