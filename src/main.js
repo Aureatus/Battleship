@@ -65,4 +65,5 @@ const gameFactory = () => {
   );
 };
 
-gameFactory();
+const initialGame = gameFactory;
+initialGame();
