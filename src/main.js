@@ -27,7 +27,7 @@ const gameFactory = () => {
 
     return { finishedGameBoard };
   };
-  for (let i = 1; i <= 2; i++) {
+  for (let i = 2; i <= 2; i++) {
     let gameboard;
     if (i === 1) {
       gameboard = gameBoard1;
@@ -57,7 +57,11 @@ const gameFactory = () => {
   }
   domMethods().generateGrid(gameBoard1, 0);
   domMethods().generateGrid(gameBoard2, 1);
-  domMethods().attackListener(
+  domMethods().shipPlacementInterfaceGenerator();
+
+  domMethods().shipPlacement(
+    gameBoard1,
+    domMethods().attackListener,
     1,
     gameBoard2,
     gameBoard1,
@@ -70,6 +74,5 @@ const gameFactory = () => {
 
 const initialGame = gameFactory;
 initialGame();
-domMethods().shipPlacementInterfaceGenerator();
 
 const newGame = [];
