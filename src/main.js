@@ -4,6 +4,11 @@ import "./style.css";
 const { gameBoardFactory } = require("./modules/gameBoard");
 const { player } = require("./modules/player");
 const { domMethods } = require("./modules/DOM");
+
+const gameOver = () => {
+  newGame[0] = gameFactory();
+};
+
 const gameFactory = () => {
   const gameBoard1 = gameBoardFactory();
   const gameBoard2 = gameBoardFactory();
@@ -61,9 +66,12 @@ const gameFactory = () => {
     gameBoard1,
     player1.attackEnemyGameboard,
     player2.attackEnemyGameboard,
-    isGameOver
+    isGameOver,
+    gameOver
   );
 };
 
 const initialGame = gameFactory;
 initialGame();
+
+const newGame = [];
