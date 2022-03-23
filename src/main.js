@@ -70,5 +70,6 @@ const gameFactory = () => {
 
 const initialGame = gameFactory;
 initialGame();
+domMethods().shipPlacementInterfaceGenerator();
 
 const newGame = [];
