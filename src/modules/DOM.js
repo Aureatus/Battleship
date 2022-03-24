@@ -29,6 +29,17 @@ const domMethods = () => {
     placementInterface.appendChild(currentShip);
     const form = document.createElement("form");
     form.classList.add("coordinateForm");
+    const selectOrientation = document.createElement("select");
+    selectOrientation.classList.add("orientationSelection");
+    const horizontalOption = document.createElement("option");
+    horizontalOption.value = "horizontal";
+    horizontalOption.textContent = "horizontal";
+    const verticalOption = document.createElement("option");
+    verticalOption.value = "vertical";
+    verticalOption.textContent = "vertical";
+    selectOrientation.appendChild(horizontalOption);
+    selectOrientation.appendChild(verticalOption);
+    form.appendChild(selectOrientation);
     const x = document.createElement("div");
     x.classList.add("x-coordinate");
     const xLabel = document.createElement("label");
@@ -86,8 +97,8 @@ const domMethods = () => {
     const shipLabel = coordinateForm.parentElement.querySelector("h3");
     shipLabel.textContent = "Carrier";
     const shipFunction = (gameBoard) => {
-      const xCoordinate = coordinateForm.elements[0].value;
-      const yCoordinate = coordinateForm.elements[1].value;
+      const xCoordinate = coordinateForm.elements[1].value;
+      const yCoordinate = coordinateForm.elements[2].value;
       switch (counter) {
         case 0:
           shipLetter = "C";
