@@ -92,13 +92,13 @@ const domMethods = () => {
     let shipLetter;
     let shipLength;
     let counter = 0;
-    let shipOrientation = "horizontal";
     const coordinateForm = document.querySelector(".coordinateForm");
     const shipLabel = coordinateForm.parentElement.querySelector("h3");
     shipLabel.textContent = "Carrier";
     const shipFunction = (gameBoard) => {
       const xCoordinate = coordinateForm.elements[1].value;
       const yCoordinate = coordinateForm.elements[2].value;
+      shipOrientation = coordinateForm.elements[0].value;
       switch (counter) {
         case 0:
           shipLetter = "C";
