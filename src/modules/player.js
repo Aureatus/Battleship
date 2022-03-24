@@ -27,12 +27,19 @@ const player = (gameboard, enemygameboard, type) => {
     const placeShipsAI = () => {
       let shipLetter;
       let shipLength;
-      let shipOrientation = "horizontal";
+      let shipOrientation;
       let coordinates = [];
       const coordinateGenerator = () => {
         let verificationArray = new Array(100).fill("");
         let a = 0;
         while (a < 5) {
+          const random = Math.random();
+          if (random < 0.5) {
+            shipOrientation = "vertical";
+          }
+          if (random > 0.5) {
+            shipOrientation = "horizontal";
+          }
           switch (a) {
             case 0:
               shipLetter = "C";
@@ -60,12 +67,13 @@ const player = (gameboard, enemygameboard, type) => {
           const coordObject = {};
           coordObject.x = Math.floor(Math.random() * 9);
           coordObject.y = Math.floor(Math.random() * 9);
+          coordObject.orientation = shipOrientation;
           let shipPosition = gameboard.coordinatesToIndex(
             coordObject.x,
             coordObject.y
           );
           let passesIf = true;
-          if (shipOrientation === "horizontal") {
+          if (coordObject.orientation === "horizontal") {
             for (let i = shipPosition; i < shipPosition + shipLength; i++) {
               if (verificationArray[i] != "") {
                 passesIf = false;
@@ -78,6 +86,30 @@ const player = (gameboard, enemygameboard, type) => {
             if (passesIf) {
               for (let i = shipPosition; i < shipPosition + shipLength; i++) {
                 verificationArray[i] = shipLetter;
+              }
+              coordinates.push(coordObject);
+              a++;
+            }
+          }
+          if (coordObject.orientation === "vertical") {
+            let counter = shipPosition;
+            if (100 - shipPosition - shipLength * 10 < 0) {
+              passesIf = false;
+            }
+            counter = shipPosition;
+            for (
+              let i = shipPosition;
+              i < shipPosition + shipLength * 10;
+              i += 10
+            ) {
+              if (verificationArray[i] != "") {
+                passesIf = false;
+              }
+            }
+            if (passesIf) {
+              for (i = shipPosition; i < shipPosition + shipLength; i++) {
+                verificationArray[counter] = shipLetter;
+                counter += 10;
               }
               coordinates.push(coordObject);
               a++;
@@ -119,7 +151,7 @@ const player = (gameboard, enemygameboard, type) => {
           ),
           shipLength,
           shipLetter,
-          "horizontal"
+          coordinates[counter].orientation
         );
       }
     };
