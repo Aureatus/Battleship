@@ -107,6 +107,21 @@ const domMethods = () => {
         default:
           break;
       }
+      if (shipOrientation === "horizontal") {
+        let currentPosition = gameBoard.coordinatesToIndex(
+          xCoordinate,
+          yCoordinate
+        );
+        let currentTenth = Math.floor(currentPosition / 10) * 10;
+        if (currentPosition + shipLength > currentTenth + 10) {
+          return;
+        }
+        for (let i = currentPosition; i < currentPosition + shipLength; i++) {
+          if (gameBoard1.gameBoardArray[currentPosition] != "") {
+            return;
+          }
+        }
+      }
       gameBoard.placeShip(
         gameBoard.coordinatesToIndex(xCoordinate, yCoordinate),
         shipLength,
@@ -114,7 +129,6 @@ const domMethods = () => {
         shipOrientation
       );
       counter++;
-      console.log(counter);
     };
     coordinateForm.addEventListener("submit", function handler(e) {
       e.preventDefault();
