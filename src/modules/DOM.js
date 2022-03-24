@@ -152,6 +152,17 @@ const domMethods = () => {
             "Invalid placement, Ship would go off of gameboard.";
           return;
         }
+        for (
+          let i = currentPosition;
+          i < currentPosition + shipLength * 10;
+          i += 10
+        ) {
+          if (gameBoard1.gameBoardArray[currentPosition] != "") {
+            document.querySelector(".errorDiv").textContent =
+              "Invalid placement, Ship would collide with another ship.";
+            return;
+          }
+        }
       }
       switch (counter) {
         case 0:
