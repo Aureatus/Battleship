@@ -55,6 +55,9 @@ const domMethods = () => {
     form.appendChild(y);
     const submit = document.createElement("input");
     submit.type = "submit";
+    const errorDiv = document.createElement("div");
+    errorDiv.classList.add("errorDiv");
+    form.appendChild(errorDiv);
     form.appendChild(submit);
     placementInterface.appendChild(form);
     player1Area.appendChild(placementInterface);
@@ -89,27 +92,22 @@ const domMethods = () => {
         case 0:
           shipLetter = "C";
           shipLength = 5;
-          shipLabel.textContent = "BattleShip";
           break;
         case 1:
           shipLetter = "B";
           shipLength = 4;
-          shipLabel.textContent = "Destroyer";
           break;
         case 2:
           shipLetter = "D";
           shipLength = 3;
-          shipLabel.textContent = "Submarine";
           break;
         case 3:
           shipLetter = "S";
           shipLength = 3;
-          shipLabel.textContent = "Patrol Boat";
           break;
         case 4:
           shipLetter = "P";
           shipLength = 2;
-          shipLabel.textContent = "";
           break;
         default:
           break;
@@ -121,13 +119,36 @@ const domMethods = () => {
         );
         let currentTenth = Math.floor(currentPosition / 10) * 10;
         if (currentPosition + shipLength > currentTenth + 10) {
+          document.querySelector(".errorDiv").textContent =
+            "Invalid placement, Ship would go off of gameboard.";
           return;
         }
         for (let i = currentPosition; i < currentPosition + shipLength; i++) {
           if (gameBoard1.gameBoardArray[currentPosition] != "") {
+            document.querySelector(".errorDiv").textContent =
+              "Invalid placement, Ship would collide with another ship.";
             return;
           }
         }
+      }
+      switch (counter) {
+        case 0:
+          shipLabel.textContent = "BattleShip";
+          break;
+        case 1:
+          shipLabel.textContent = "Destroyer";
+          break;
+        case 2:
+          shipLabel.textContent = "Submarine";
+          break;
+        case 3:
+          shipLabel.textContent = "Patrol Boat";
+          break;
+        case 4:
+          shipLabel.textContent = "";
+          break;
+        default:
+          break;
       }
       gameBoard.placeShip(
         gameBoard.coordinatesToIndex(xCoordinate, yCoordinate),
@@ -135,7 +156,9 @@ const domMethods = () => {
         shipLetter,
         shipOrientation
       );
+
       counter++;
+      document.querySelector(".errorDiv").textContent = "";
     };
     coordinateForm.addEventListener("submit", function handler(e) {
       e.preventDefault();
