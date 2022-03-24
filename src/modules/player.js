@@ -12,15 +12,47 @@ const player = (gameboard, enemygameboard, type) => {
     return { attackEnemyGameboard };
   }
   if (type === "computer") {
+    let lasthit;
     const attackEnemyGameboard = () => {
-      let position = Math.floor(Math.random() * 100);
-      while (
-        enemygameboard.gameBoardArray[position] === "miss" ||
-        enemygameboard.gameBoardArray[position] === "hit"
-      ) {
+      let position;
+      if (enemygameboard.gameBoardArray[lasthit] === "hit") {
+        if (
+          (enemygameboard.gameBoardArray[lasthit - 1] != "hit" || "miss") &
+          (lasthit > 0)
+        ) {
+          position = lasthit - 1;
+          enemygameboard.receiveAttack(position);
+        } else if (
+          (enemygameboard.gameBoardArray[lasthit + 1] != "hit" || "miss") &
+          (lasthit < 100)
+        ) {
+          position = lasthit + 1;
+          enemygameboard.receiveAttack(position);
+        } else if (
+          (enemygameboard.gameBoardArray[lasthit - 10] != "hit" || "miss") &
+          (lasthit - 10 > 0)
+        ) {
+          position = lasthit - 10;
+          enemygameboard.receiveAttack(position);
+        } else if (
+          (enemygameboard.gameBoardArray[lasthit + 10] != "hit" || "miss") &
+          (lasthit + 10 < 100)
+        ) {
+          position = lasthit + 10;
+          enemygameboard.receiveAttack(position);
+        }
+      } else {
         position = Math.floor(Math.random() * 100);
+        while (
+          enemygameboard.gameBoardArray[position] === "miss" ||
+          enemygameboard.gameBoardArray[position] === "hit"
+        ) {
+          position = Math.floor(Math.random() * 100);
+        }
+        enemygameboard.receiveAttack(position);
       }
-      enemygameboard.receiveAttack(position);
+
+      lasthit = position;
       return position;
     };
 
