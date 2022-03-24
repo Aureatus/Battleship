@@ -80,6 +80,8 @@ const domMethods = () => {
     let counter = 0;
     let shipOrientation = "horizontal";
     const coordinateForm = document.querySelector(".coordinateForm");
+    const shipLabel = coordinateForm.parentElement.querySelector("h3");
+    shipLabel.textContent = "Carrier";
     const shipFunction = (gameBoard) => {
       const xCoordinate = coordinateForm.elements[0].value;
       const yCoordinate = coordinateForm.elements[1].value;
@@ -87,22 +89,27 @@ const domMethods = () => {
         case 0:
           shipLetter = "C";
           shipLength = 5;
+          shipLabel.textContent = "BattleShip";
           break;
         case 1:
           shipLetter = "B";
           shipLength = 4;
+          shipLabel.textContent = "Destroyer";
           break;
         case 2:
           shipLetter = "D";
           shipLength = 3;
+          shipLabel.textContent = "Submarine";
           break;
         case 3:
           shipLetter = "S";
           shipLength = 3;
+          shipLabel.textContent = "Patrol Boat";
           break;
         case 4:
           shipLetter = "P";
           shipLength = 2;
+          shipLabel.textContent = "";
           break;
         default:
           break;
