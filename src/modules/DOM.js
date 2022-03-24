@@ -142,6 +142,17 @@ const domMethods = () => {
           }
         }
       }
+      if (shipOrientation === "vertical") {
+        let currentPosition = gameBoard.coordinatesToIndex(
+          xCoordinate,
+          yCoordinate
+        );
+        if (100 - currentPosition - shipLength * 10 < 0) {
+          document.querySelector(".errorDiv").textContent =
+            "Invalid placement, Ship would go off of gameboard.";
+          return;
+        }
+      }
       switch (counter) {
         case 0:
           shipLabel.textContent = "BattleShip";
