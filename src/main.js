@@ -29,34 +29,6 @@ const gameFactory = () => {
   };
 
   player2.placeShipsAI();
-  /*for (let i = 2; i <= 2; i++) {
-    let gameboard;
-    if (i === 1) {
-      gameboard = gameBoard1;
-    } else if (i === 2) {
-      gameboard = gameBoard2;
-    }
-    gameboard.placeShip(gameboard.coordinatesToIndex(0, 0), 5, "C", "vertical");
-    gameboard.placeShip(
-      gameboard.coordinatesToIndex(3, 2),
-      4,
-      "B",
-      "horizontal"
-    );
-    gameboard.placeShip(
-      gameboard.coordinatesToIndex(2, 5),
-      3,
-      "D",
-      "horizontal"
-    );
-    gameboard.placeShip(gameboard.coordinatesToIndex(7, 0), 3, "S", "vertical");
-    gameboard.placeShip(
-      gameboard.coordinatesToIndex(4, 8),
-      2,
-      "P",
-      "horizontal"
-    );
-  }*/
   domMethods().generateGrid(gameBoard1, 0);
   domMethods().generateGrid(gameBoard2, 1);
   domMethods().shipPlacementInterfaceGenerator();
