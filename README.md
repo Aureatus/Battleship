@@ -12,5 +12,6 @@ This project was my first usage of unit testing in a project, so i've learnt a l
 - npm install
 - npm audit fix
 - npm run webpack
+- Open dist/index.html
 ```
 
