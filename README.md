@@ -10,6 +10,7 @@ This project was my first usage of unit testing in a project, so i've learnt a l
 ```
 - git clone https://github.com/ZanyAlex/Battleship.git
 - npm install
+- npm audit fix
 - npm run webpack
 ```
 
