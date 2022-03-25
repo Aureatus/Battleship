@@ -292,9 +292,11 @@ const domMethods = () => {
         grid.children[index].textContent = gameBoard.gameBoardArray[index];
         if (gameBoard.gameBoardArray[index] === "hit") {
           grid.children[index].classList.add("hit");
+          grid.children[index].innerHTML = "&#215";
         }
         if (gameBoard.gameBoardArray[index] === "miss") {
           grid.children[index].classList.add("miss");
+          grid.children[index].innerHTML = "&#215";
         }
       }
     });
