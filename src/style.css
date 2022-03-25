@@ -26,6 +26,7 @@ body {
   background-color: #4086db;
 
   border-radius: 100px;
+  outline: 2px solid #c9842e;
 }
 
 .container header {
