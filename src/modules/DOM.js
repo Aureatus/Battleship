@@ -290,6 +290,12 @@ const domMethods = () => {
       const grid = document.querySelector("main").children[number].children[0];
       if (unalteredGameBoard[index] != gameBoard.gameBoardArray[index]) {
         grid.children[index].textContent = gameBoard.gameBoardArray[index];
+        if (gameBoard.gameBoardArray[index] === "hit") {
+          grid.children[index].classList.add("hit");
+        }
+        if (gameBoard.gameBoardArray[index] === "miss") {
+          grid.children[index].classList.add("miss");
+        }
       }
     });
   };
