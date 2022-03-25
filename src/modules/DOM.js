@@ -8,6 +8,13 @@ const domMethods = () => {
     gameBoard.gameBoardArray.forEach((e) => {
       const div = document.createElement("div");
       div.textContent = e;
+
+      if (number === 1) {
+        if (e != "" || "hit" || "miss") {
+          div.textContent = "";
+        }
+      }
+
       grid.appendChild(div);
     });
   };
@@ -289,10 +296,14 @@ const domMethods = () => {
     unalteredGameBoard.forEach((element, index) => {
       const grid = document.querySelector("main").children[number].children[0];
       if (unalteredGameBoard[index] != gameBoard.gameBoardArray[index]) {
-        grid.children[index].textContent = gameBoard.gameBoardArray[index];
+        if (number === 1) {
+          grid.children[index].textContent = gameBoard.gameBoardArray[index];
+        }
         if (gameBoard.gameBoardArray[index] === "hit") {
           grid.children[index].classList.add("hit");
-          grid.children[index].innerHTML = "&#215";
+          if (number === 1) {
+            grid.children[index].innerHTML = "&#215";
+          }
         }
         if (gameBoard.gameBoardArray[index] === "miss") {
           grid.children[index].classList.add("miss");
