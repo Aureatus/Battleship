@@ -203,3 +203,37 @@ div.placementInterface .coordinateForm input[type="submit"] {
   border: 1px solid black;
   border-radius: 20px;
 }
+
+dialog {
+  box-sizing: border-box;
+  border: none;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  border-radius: 20px;
+}
+
+div.endGameScreen {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+
+  border-radius: 20px;
+  border: 5px solid black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: azure;
+
+  font-family: "Red Hat Mono", monospace;
+  font-size: calc(0.5rem + 1vw);
+}
+
+div.endGameScreen button {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 20px;
+}
