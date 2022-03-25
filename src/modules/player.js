@@ -56,100 +56,107 @@ const player = (gameboard, enemygameboard, type) => {
       return position;
     };
 
+    const coordinateGenerator = (
+      shipLetter,
+      shipLength,
+      shipOrientation,
+      coordinates
+    ) => {
+      let verificationArray = new Array(100).fill("");
+      let a = 0;
+      while (a < 5) {
+        const random = Math.random();
+        if (random < 0.5) {
+          shipOrientation = "vertical";
+        }
+        if (random > 0.5) {
+          shipOrientation = "horizontal";
+        }
+        switch (a) {
+          case 0:
+            shipLetter = "C";
+            shipLength = 5;
+            break;
+          case 1:
+            shipLetter = "B";
+            shipLength = 4;
+            break;
+          case 2:
+            shipLetter = "D";
+            shipLength = 3;
+            break;
+          case 3:
+            shipLetter = "S";
+            shipLength = 3;
+            break;
+          case 4:
+            shipLetter = "P";
+            shipLength = 2;
+            break;
+          default:
+            break;
+        }
+        const coordObject = {};
+        coordObject.x = Math.floor(Math.random() * 9);
+        coordObject.y = Math.floor(Math.random() * 9);
+        coordObject.orientation = shipOrientation;
+        let shipPosition = gameboard.coordinatesToIndex(
+          coordObject.x,
+          coordObject.y
+        );
+        let passesIf = true;
+        if (coordObject.orientation === "horizontal") {
+          for (let i = shipPosition; i < shipPosition + shipLength; i++) {
+            if (verificationArray[i] != "") {
+              passesIf = false;
+            }
+            let currentTenth = Math.floor(shipPosition / 10) * 10;
+            if (shipPosition + shipLength > currentTenth + 10) {
+              passesIf = false;
+            }
+          }
+          if (passesIf) {
+            for (let i = shipPosition; i < shipPosition + shipLength; i++) {
+              verificationArray[i] = shipLetter;
+            }
+            coordinates.push(coordObject);
+            a++;
+          }
+        }
+        if (coordObject.orientation === "vertical") {
+          let counter = shipPosition;
+          if (100 - shipPosition - shipLength * 10 < 0) {
+            passesIf = false;
+          }
+          counter = shipPosition;
+          for (
+            let i = shipPosition;
+            i < shipPosition + shipLength * 10;
+            i += 10
+          ) {
+            if (verificationArray[i] != "") {
+              passesIf = false;
+            }
+          }
+          if (passesIf) {
+            for (i = shipPosition; i < shipPosition + shipLength; i++) {
+              verificationArray[counter] = shipLetter;
+              counter += 10;
+            }
+            coordinates.push(coordObject);
+            a++;
+          }
+        }
+      }
+    };
+
     const placeShipsAI = () => {
       let shipLetter;
       let shipLength;
       let shipOrientation;
       let coordinates = [];
-      const coordinateGenerator = () => {
-        let verificationArray = new Array(100).fill("");
-        let a = 0;
-        while (a < 5) {
-          const random = Math.random();
-          if (random < 0.5) {
-            shipOrientation = "vertical";
-          }
-          if (random > 0.5) {
-            shipOrientation = "horizontal";
-          }
-          switch (a) {
-            case 0:
-              shipLetter = "C";
-              shipLength = 5;
-              break;
-            case 1:
-              shipLetter = "B";
-              shipLength = 4;
-              break;
-            case 2:
-              shipLetter = "D";
-              shipLength = 3;
-              break;
-            case 3:
-              shipLetter = "S";
-              shipLength = 3;
-              break;
-            case 4:
-              shipLetter = "P";
-              shipLength = 2;
-              break;
-            default:
-              break;
-          }
-          const coordObject = {};
-          coordObject.x = Math.floor(Math.random() * 9);
-          coordObject.y = Math.floor(Math.random() * 9);
-          coordObject.orientation = shipOrientation;
-          let shipPosition = gameboard.coordinatesToIndex(
-            coordObject.x,
-            coordObject.y
-          );
-          let passesIf = true;
-          if (coordObject.orientation === "horizontal") {
-            for (let i = shipPosition; i < shipPosition + shipLength; i++) {
-              if (verificationArray[i] != "") {
-                passesIf = false;
-              }
-              let currentTenth = Math.floor(shipPosition / 10) * 10;
-              if (shipPosition + shipLength > currentTenth + 10) {
-                passesIf = false;
-              }
-            }
-            if (passesIf) {
-              for (let i = shipPosition; i < shipPosition + shipLength; i++) {
-                verificationArray[i] = shipLetter;
-              }
-              coordinates.push(coordObject);
-              a++;
-            }
-          }
-          if (coordObject.orientation === "vertical") {
-            let counter = shipPosition;
-            if (100 - shipPosition - shipLength * 10 < 0) {
-              passesIf = false;
-            }
-            counter = shipPosition;
-            for (
-              let i = shipPosition;
-              i < shipPosition + shipLength * 10;
-              i += 10
-            ) {
-              if (verificationArray[i] != "") {
-                passesIf = false;
-              }
-            }
-            if (passesIf) {
-              for (i = shipPosition; i < shipPosition + shipLength; i++) {
-                verificationArray[counter] = shipLetter;
-                counter += 10;
-              }
-              coordinates.push(coordObject);
-              a++;
-            }
-          }
-        }
-      };
-      coordinateGenerator();
+
+      coordinateGenerator(shipLetter, shipLength, shipOrientation, coordinates);
       let counter = 0;
       for (counter; counter < 5; counter++) {
         switch (counter) {
