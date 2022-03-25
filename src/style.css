@@ -15,11 +15,11 @@ body {
 }
 
 .container {
-  height: 80%;
+  height: min-content;
   width: 80%;
 
   display: grid;
-  grid-template: 1fr 8fr / 1fr;
+  grid-template: 1fr 4fr / 1fr;
   justify-content: center;
   align-items: center;
 
@@ -56,13 +56,16 @@ body {
 }
 
 .container main section {
+  display: grid;
+  height: min-content;
 }
 
 div.gameboard {
   display: grid;
-  grid-template: repeat(10, 3vw) / repeat(10, 3vw);
+  grid-template: repeat(10, 2.5vw) / repeat(10, 2.5vw);
   border: 0.5px solid #000;
   width: min-content;
+  justify-self: center;
 }
 
 div.gameboard > div {
@@ -85,4 +88,118 @@ div.gameboard > div.hit {
 div.gameboard > div.miss {
   font-size: calc(0.6rem + 2vw);
   background-color: #4086db;
+}
+
+div.placementInterface {
+  display: grid;
+  grid-template: 1fr 1fr 3fr / 1fr;
+  width: 100%;
+
+  justify-items: center;
+  align-items: center;
+}
+
+div.placementInterface h2 {
+  margin: 0;
+  padding: 0;
+  font-family: "Red Hat Mono", monospace;
+  font-size: calc(1.5rem + 1.5vw);
+  color: #e6bb87;
+  text-shadow: 2px 2px black;
+
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+div.placementInterface h3 {
+  margin: 0;
+  padding: 0;
+  font-family: "Red Hat Mono", monospace;
+  font-size: calc(1rem + 1vw);
+
+  text-shadow: 1px 1px #e6bb87;
+
+  justify-self: center;
+  align-self: center;
+}
+
+div.placementInterface .coordinateForm {
+  display: grid;
+
+  grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr;
+
+  justify-items: center;
+  align-items: center;
+
+  width: 100%;
+}
+
+div.placementInterface .coordinateForm .orientationSelection {
+  height: 100%;
+  width: 50%;
+  font-family: "Red Hat Mono", monospace;
+  background-color: white;
+  border-radius: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+div.placementInterface .coordinateForm .x-coordinate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+div.placementInterface .coordinateForm .x-coordinate input {
+  font-family: "Red Hat Mono", monospace;
+  text-align: center;
+  width: 20%;
+  border-radius: 40%;
+  border: 1px solid black;
+}
+div.placementInterface .coordinateForm .x-coordinate label {
+  font-size: calc(0.5rem + 1vw);
+}
+
+div.placementInterface .coordinateForm .y-coordinate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.placementInterface .coordinateForm .y-coordinate input {
+  font-family: "Red Hat Mono", monospace;
+  text-align: center;
+  width: 20%;
+  border-radius: 40%;
+  border: 1px solid black;
+}
+
+div.placementInterface .coordinateForm .y-coordinate label {
+  font-size: calc(0.5rem + 1vw);
+}
+
+div.placementInterface .coordinateForm .errorDiv {
+  font-family: "Red Hat Mono", monospace;
+  font-size: calc(0.5rem + 1vw);
+  text-align: center;
+}
+
+div.placementInterface .coordinateForm input[type="submit"] {
+  width: 40%;
+  height: 100%;
+
+  font-family: "Red Hat Mono", monospace;
+  font-size: calc(0.5rem + 1vw);
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 20px;
 }
