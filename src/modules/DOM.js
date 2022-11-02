@@ -157,7 +157,7 @@ const domMethods = () => {
           return;
         }
         for (let i = targetIndex; i < targetIndex + shipLength * 10; i += 10) {
-          if (gameBoard1.gameBoardArray[targetIndex] != "") {
+          if (gameBoard1.gameBoardArray[i] != "") {
             document.querySelector(".errorDiv").textContent =
               "Invalid placement, Ship would collide with another ship.";
             return;
@@ -271,7 +271,7 @@ const domMethods = () => {
           i < currentPosition + shipLength * 10;
           i += 10
         ) {
-          if (gameBoard1.gameBoardArray[currentPosition] != "") {
+          if (gameBoard1.gameBoardArray[i] != "") {
             document.querySelector(".errorDiv").textContent =
               "Invalid placement, Ship would collide with another ship.";
             return;
