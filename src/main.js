@@ -1,9 +1,8 @@
 import "normalize.css";
 import "./style.css";
-
-const { gameBoardFactory } = require("./modules/gameBoard");
-const { player } = require("./modules/player");
-const { domMethods } = require("./modules/DOM");
+import { gameBoardFactory } from "./modules/gameBoard";
+import { player } from "./modules/player";
+import { domMethods } from "./modules/DOM";
 
 const gameOver = () => {
   newGame[0] = gameFactory();

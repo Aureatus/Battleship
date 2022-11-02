@@ -1,4 +1,4 @@
-const { gameBoardFactory } = require("../modules/gameBoard");
+import { gameBoardFactory } from "../modules/gameBoard";
 
 let gameBoard;
 
@@ -20,7 +20,7 @@ test("shipPlacementVertical", () => {
   gameBoard.placeShip(20, 2, "P", "vertical");
   const arraySlice = [];
   let counter = 20;
-  for (i = 0; i < 2; i++) {
+  for (let i = 0; i < 2; i++) {
     arraySlice.push(gameBoard.gameBoardArray[counter]);
     counter += 10;
   }

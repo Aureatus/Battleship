@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/ZanyAlex/Battleship#readme",
   "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "@babel/preset-env": "^7.19.4",
     "css-loader": "^6.7.1",
     "eslint": "^8.11.0",
     "eslint-config-airbnb-base": "^15.0.0",

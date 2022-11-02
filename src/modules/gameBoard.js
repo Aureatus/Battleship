@@ -1,4 +1,4 @@
-const { shipFactory } = require("./ship");
+import { shipFactory } from "./ship";
 
 const gameBoardFactory = () => {
   const gameBoardArray = new Array(100).fill("");
@@ -10,7 +10,7 @@ const gameBoardFactory = () => {
     let indexValue = 0;
 
     while (currentY < y) {
-      for (i = 0; i <= 9; i++) {
+      for (let i = 0; i <= 9; i++) {
         indexValue++;
       }
       currentY++;
@@ -24,7 +24,7 @@ const gameBoardFactory = () => {
 
   const placeShip = (position, length, tag, orientation) => {
     if (orientation === "horizontal") {
-      for (i = position; i < position + length; i++) {
+      for (let i = position; i < position + length; i++) {
         if (gameBoardArray[i] != "") {
           throw new Error(
             `You are trying to place a ship where there is already one.`
@@ -32,14 +32,14 @@ const gameBoardFactory = () => {
         }
       }
       ships[tag] = shipFactory(length);
-      for (i = position; i < position + length; i++) {
+      for (let i = position; i < position + length; i++) {
         gameBoardArray[i] = tag;
         unModifiedgameBoardArray[i] = tag;
       }
     }
     if (orientation === "vertical") {
       let counter = position;
-      for (i = position; i < position + length; i++) {
+      for (let i = position; i < position + length; i++) {
         if (gameBoardArray[counter] != "") {
           throw new Error(
             `You are trying to place a ship where there is already one.`
@@ -49,7 +49,7 @@ const gameBoardFactory = () => {
       }
       counter = position;
       ships[tag] = shipFactory(length);
-      for (i = position; i < position + length; i++) {
+      for (let i = position; i < position + length; i++) {
         gameBoardArray[counter] = tag;
         unModifiedgameBoardArray[counter] = tag;
         counter += 10;
@@ -62,7 +62,7 @@ const gameBoardFactory = () => {
       ((gameBoardArray[position] != "miss") &
         (gameBoardArray[position] != "hit"))
     ) {
-      shipTag = gameBoardArray[position];
+      let shipTag = gameBoardArray[position];
       const singularShipArray = [];
       let counter = 1;
       singularShipArray.push("origin");
@@ -84,7 +84,7 @@ const gameBoardFactory = () => {
   };
   const shipsSunk = () => {
     const sunkTracker = [];
-    for (key in ships) {
+    for (const key in ships) {
       let sunkStatus = ships[key].isSunk();
       sunkTracker.push(sunkStatus);
     }
@@ -101,4 +101,4 @@ const gameBoardFactory = () => {
   };
 };
 
-exports.gameBoardFactory = gameBoardFactory;
+export { gameBoardFactory };

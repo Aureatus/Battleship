@@ -139,7 +139,7 @@ const player = (gameboard, enemygameboard, type) => {
             }
           }
           if (passesIf) {
-            for (i = shipPosition; i < shipPosition + shipLength; i++) {
+            for (let i = shipPosition; i < shipPosition + shipLength; i++) {
               verificationArray[counter] = shipLetter;
               counter += 10;
             }
@@ -198,4 +198,4 @@ const player = (gameboard, enemygameboard, type) => {
   }
 };
 
-exports.player = player;
+export { player };

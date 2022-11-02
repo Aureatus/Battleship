@@ -10,4 +10,4 @@ const shipFactory = (length) => {
   return { shipLength, hitArray, hit, isSunk };
 };
 
-exports.shipFactory = shipFactory;
+export { shipFactory };

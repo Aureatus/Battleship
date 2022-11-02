@@ -1,4 +1,4 @@
-const { shipFactory } = require("../modules/ship");
+import { shipFactory } from "../modules/ship";
 
 let ship;
 

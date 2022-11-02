@@ -1,5 +1,5 @@
-const { gameBoardFactory } = require("../modules/gameBoard");
-const { player } = require("../modules/player");
+import { gameBoardFactory } from "../modules/gameBoard";
+import { player } from "../modules/player";
 let gameboard1;
 let gameboard2;
 beforeEach(() => {
