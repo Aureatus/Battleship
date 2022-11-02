@@ -260,7 +260,8 @@ const domMethods = () => {
           xCoordinate,
           yCoordinate
         );
-        if (100 - currentPosition - shipLength * 10 < 0) {
+        let currentTenth = Math.floor(currentPosition / 10) * 10;
+        if (100 - currentTenth < shipLength * 10) {
           document.querySelector(".errorDiv").textContent =
             "Invalid placement, Ship would go off of gameboard.";
           return;
