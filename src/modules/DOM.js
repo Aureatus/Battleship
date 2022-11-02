@@ -101,7 +101,7 @@ const domMethods = () => {
     let counter = 0;
     const coordinateForm = document.querySelector(".coordinateForm");
     const DOMgameBoard = document.querySelector(".player1 > .gameboard");
-    let orientation = "horizontal";
+    let orientation = "vertical";
     DOMgameBoard.addEventListener("dragover", (e) => {
       e.preventDefault();
     });
@@ -142,6 +142,21 @@ const domMethods = () => {
           return;
         }
         for (let i = targetIndex; i < targetIndex + shipLength; i++) {
+          if (gameBoard1.gameBoardArray[targetIndex] != "") {
+            document.querySelector(".errorDiv").textContent =
+              "Invalid placement, Ship would collide with another ship.";
+            return;
+          }
+        }
+      }
+      if (orientation === "vertical") {
+        let currentTenth = Math.floor(targetIndex / 10) * 10;
+        if (100 - currentTenth < shipLength * 10) {
+          document.querySelector(".errorDiv").textContent =
+            "Invalid placement, Ship would go off of gameboard.";
+          return;
+        }
+        for (let i = targetIndex; i < targetIndex + shipLength * 10; i += 10) {
           if (gameBoard1.gameBoardArray[targetIndex] != "") {
             document.querySelector(".errorDiv").textContent =
               "Invalid placement, Ship would collide with another ship.";
@@ -262,6 +277,7 @@ const domMethods = () => {
           }
         }
       }
+
       switch (counter) {
         case 0:
           shipLabel.textContent = "BattleShip";
