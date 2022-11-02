@@ -101,7 +101,7 @@ const domMethods = () => {
     let counter = 0;
     const coordinateForm = document.querySelector(".coordinateForm");
     const DOMgameBoard = document.querySelector(".player1 > .gameboard");
-    let orientation = "vertical";
+    let orientation = "horizontal";
     DOMgameBoard.addEventListener("dragover", (e) => {
       e.preventDefault();
     });
@@ -142,7 +142,7 @@ const domMethods = () => {
           return;
         }
         for (let i = targetIndex; i < targetIndex + shipLength; i++) {
-          if (gameBoard1.gameBoardArray[targetIndex] != "") {
+          if (gameBoard1.gameBoardArray[i] != "") {
             document.querySelector(".errorDiv").textContent =
               "Invalid placement, Ship would collide with another ship.";
             return;
@@ -248,7 +248,7 @@ const domMethods = () => {
           return;
         }
         for (let i = currentPosition; i < currentPosition + shipLength; i++) {
-          if (gameBoard1.gameBoardArray[currentPosition] != "") {
+          if (gameBoard1.gameBoardArray[i] != "") {
             document.querySelector(".errorDiv").textContent =
               "Invalid placement, Ship would collide with another ship.";
             return;
