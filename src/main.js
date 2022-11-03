@@ -5,6 +5,7 @@ import { player } from "./modules/player";
 import { domMethods } from "./modules/DOM";
 import generateGrid from "./modules/domMethods/generateGrid";
 import shipPlacementInterfaceGenerator from "./modules/domMethods/shipPlacementInterfaceGenerator";
+import attackListener from "./modules/domMethods/attackListener";
 
 const gameOver = () => {
   newGame[0] = gameFactory();
@@ -36,7 +37,7 @@ const gameFactory = () => {
 
   domMethods().shipPlacement(
     gameBoard1,
-    domMethods().attackListener,
+    attackListener,
     1,
     gameBoard2,
     gameBoard1,
