@@ -47,36 +47,9 @@ const domMethods = () => {
     selectOrientation.appendChild(horizontalOption);
     selectOrientation.appendChild(verticalOption);
     form.appendChild(selectOrientation);
-    const x = document.createElement("div");
-    x.classList.add("x-coordinate");
-    const xLabel = document.createElement("label");
-    xLabel.textContent = "X-coordinate";
-    const xInput = document.createElement("input");
-    xInput.type = "number";
-    xInput.max = 9;
-    xInput.min = 0;
-    xInput.required = true;
-    x.appendChild(xLabel);
-    x.appendChild(xInput);
-    form.appendChild(x);
-    const y = document.createElement("div");
-    y.classList.add("y-coordinate");
-    const yLabel = document.createElement("label");
-    yLabel.textContent = "Y-coordinate";
-    const yInput = document.createElement("input");
-    yInput.type = "number";
-    yInput.max = 9;
-    yInput.min = 0;
-    yInput.required = true;
-    y.appendChild(yLabel);
-    y.appendChild(yInput);
-    form.appendChild(y);
-    const submit = document.createElement("input");
-    submit.type = "submit";
     const errorDiv = document.createElement("div");
     errorDiv.classList.add("errorDiv");
     form.appendChild(errorDiv);
-    form.appendChild(submit);
     placementInterface.appendChild(form);
     player1Area.appendChild(placementInterface);
   };
@@ -208,128 +181,6 @@ const domMethods = () => {
     const shipLabel = coordinateForm.parentElement.querySelector("h3");
     shipLabel.textContent = "Carrier";
     shipLabel.draggable = true;
-
-    const shipFunction = (gameBoard) => {
-      const xCoordinate = coordinateForm.elements[1].value;
-      const yCoordinate = coordinateForm.elements[2].value;
-      shipOrientation = coordinateForm.elements[0].value;
-      switch (counter) {
-        case 0:
-          shipLetter = "C";
-          shipLength = 5;
-          break;
-        case 1:
-          shipLetter = "B";
-          shipLength = 4;
-          break;
-        case 2:
-          shipLetter = "D";
-          shipLength = 3;
-          break;
-        case 3:
-          shipLetter = "S";
-          shipLength = 3;
-          break;
-        case 4:
-          shipLetter = "P";
-          shipLength = 2;
-          break;
-        default:
-          break;
-      }
-      if (shipOrientation === "horizontal") {
-        let currentPosition = gameBoard.coordinatesToIndex(
-          xCoordinate,
-          yCoordinate
-        );
-        let currentTenth = Math.floor(currentPosition / 10) * 10;
-        if (currentPosition + shipLength > currentTenth + 10) {
-          document.querySelector(".errorDiv").textContent =
-            "Invalid placement, Ship would go off of gameboard.";
-          return;
-        }
-        for (let i = currentPosition; i < currentPosition + shipLength; i++) {
-          if (gameBoard1.gameBoardArray[i] != "") {
-            document.querySelector(".errorDiv").textContent =
-              "Invalid placement, Ship would collide with another ship.";
-            return;
-          }
-        }
-      }
-      if (shipOrientation === "vertical") {
-        let currentPosition = gameBoard.coordinatesToIndex(
-          xCoordinate,
-          yCoordinate
-        );
-        let currentTenth = Math.floor(currentPosition / 10) * 10;
-        if (100 - currentTenth < shipLength * 10) {
-          document.querySelector(".errorDiv").textContent =
-            "Invalid placement, Ship would go off of gameboard.";
-          return;
-        }
-        for (
-          let i = currentPosition;
-          i < currentPosition + shipLength * 10;
-          i += 10
-        ) {
-          if (gameBoard1.gameBoardArray[i] != "") {
-            document.querySelector(".errorDiv").textContent =
-              "Invalid placement, Ship would collide with another ship.";
-            return;
-          }
-        }
-      }
-
-      switch (counter) {
-        case 0:
-          shipLabel.textContent = "BattleShip";
-          break;
-        case 1:
-          shipLabel.textContent = "Destroyer";
-          break;
-        case 2:
-          shipLabel.textContent = "Submarine";
-          break;
-        case 3:
-          shipLabel.textContent = "Patrol Boat";
-          break;
-        case 4:
-          shipLabel.textContent = "";
-          break;
-        default:
-          break;
-      }
-      gameBoard.placeShip(
-        gameBoard.coordinatesToIndex(xCoordinate, yCoordinate),
-        shipLength,
-        shipLetter,
-        shipOrientation
-      );
-
-      counter++;
-      document.querySelector(".errorDiv").textContent = "";
-    };
-    coordinateForm.addEventListener("submit", function handler(e) {
-      e.preventDefault();
-      shipFunction(gameBoard);
-      const grid1 = document.querySelector("main").children[0].children[0];
-      removeAllChildren(grid1);
-      generateGrid(gameBoard, 0);
-      if (counter === 5) {
-        counter = 0;
-        coordinateForm.removeEventListener("submit", handler);
-        clearshipPlacementInterfaceGenerator();
-        codeToExecute(
-          gridForEventListeners,
-          gameBoard2,
-          gameBoard1,
-          player1Attack,
-          player2Attack,
-          isGameOver,
-          gameOver
-        );
-      }
-    });
   };
 
   const clearBoard = () => {
