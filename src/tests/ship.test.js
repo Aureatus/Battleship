@@ -1,4 +1,4 @@
-import { shipFactory } from "../modules/ship";
+import { shipFactory } from "../modules/logic/ship";
 
 let ship;
 

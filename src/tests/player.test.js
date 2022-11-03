@@ -1,5 +1,5 @@
-import { gameBoardFactory } from "../modules/gameBoard";
-import { player } from "../modules/player";
+import { gameBoardFactory } from "../modules/logic/gameBoard";
+import { player } from "../modules/logic/player";
 let gameboard1;
 let gameboard2;
 beforeEach(() => {
