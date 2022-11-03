@@ -1,6 +1,7 @@
 import "normalize.css";
 import "./style.css";
-import { gameBoardFactory } from "./modules/logic/gameBoard";
+
+import gameBoardFactory from "./modules/logic/gameBoard";
 import { player } from "./modules//logic/player";
 import shipPlacement from "./modules/dom/shipPlacement";
 import generateGrid from "./modules/dom/generateGrid";

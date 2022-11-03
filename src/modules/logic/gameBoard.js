@@ -101,4 +101,4 @@ const gameBoardFactory = () => {
   };
 };
 
-export { gameBoardFactory };
+export default gameBoardFactory;

@@ -1,4 +1,4 @@
-import { gameBoardFactory } from "../modules/logic/gameBoard";
+import gameBoardFactory from "../modules/logic/gameBoard";
 
 let gameBoard;
 
