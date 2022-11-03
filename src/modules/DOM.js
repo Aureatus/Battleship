@@ -281,4 +281,4 @@ const domMethods = () => {
   };
 };
 
-exports.domMethods = domMethods;
+export { domMethods };
