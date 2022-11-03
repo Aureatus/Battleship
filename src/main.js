@@ -2,7 +2,7 @@ import "normalize.css";
 import "./style.css";
 import { gameBoardFactory } from "./modules/gameBoard";
 import { player } from "./modules/player";
-import { domMethods } from "./modules/DOM";
+import shipPlacement from "./modules/DOM";
 import generateGrid from "./modules/domMethods/generateGrid";
 import shipPlacementInterfaceGenerator from "./modules/domMethods/shipPlacementInterfaceGenerator";
 import attackListener from "./modules/domMethods/attackListener";
@@ -35,7 +35,7 @@ const gameFactory = () => {
   generateGrid(gameBoard2, 1);
   shipPlacementInterfaceGenerator();
 
-  domMethods().shipPlacement(
+  shipPlacement(
     gameBoard1,
     attackListener,
     1,
