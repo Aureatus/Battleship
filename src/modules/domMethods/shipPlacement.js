@@ -1,6 +1,6 @@
-import generateGrid from "./domMethods/generateGrid";
-import removeAllChildren from "./domMethods/removeAllChildren";
-import clearshipPlacementInterfaceGenerator from "./domMethods/clearShipPlacementInterfaceGenerator";
+import generateGrid from "./generateGrid";
+import removeAllChildren from "./removeAllChildren";
+import clearshipPlacementInterfaceGenerator from "./clearShipPlacementInterfaceGenerator";
 
 const shipPlacement = (
   gameBoard,

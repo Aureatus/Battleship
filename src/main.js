@@ -2,7 +2,7 @@ import "normalize.css";
 import "./style.css";
 import { gameBoardFactory } from "./modules/gameBoard";
 import { player } from "./modules/player";
-import shipPlacement from "./modules/DOM";
+import shipPlacement from "./modules/domMethods/shipPlacement";
 import generateGrid from "./modules/domMethods/generateGrid";
 import shipPlacementInterfaceGenerator from "./modules/domMethods/shipPlacementInterfaceGenerator";
 import attackListener from "./modules/domMethods/attackListener";
