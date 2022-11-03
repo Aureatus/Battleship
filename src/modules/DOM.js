@@ -1,8 +1,6 @@
 import generateGrid from "./domMethods/generateGrid";
 import removeAllChildren from "./domMethods/removeAllChildren";
 import clearshipPlacementInterfaceGenerator from "./domMethods/clearShipPlacementInterfaceGenerator";
-import gameEndScreen from "./domMethods/gameEndScreen";
-import gridChangeRender from "./domMethods/gridChangeRender";
 
 const domMethods = () => {
   const shipPlacement = (
