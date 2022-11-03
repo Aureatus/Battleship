@@ -1,11 +1,9 @@
 import generateGrid from "./domMethods/generateGrid";
 import removeAllChildren from "./domMethods/removeAllChildren";
 import clearshipPlacementInterfaceGenerator from "./domMethods/clearShipPlacementInterfaceGenerator";
-import clearBoard from "./domMethods/clearBoard";
+import gameEndScreen from "./domMethods/gameEndScreen";
 
 const domMethods = () => {
-  const body = document.body;
-
   const shipPlacement = (
     gameBoard,
     codeToExecute,
@@ -129,25 +127,6 @@ const domMethods = () => {
     const shipLabel = coordinateForm.parentElement.querySelector("h3");
     shipLabel.textContent = "Carrier";
     shipLabel.draggable = true;
-  };
-
-  const gameEndScreen = (gameOver, finishedGameBoard) => {
-    const dialog = body.querySelector(".container > main > dialog");
-    if (finishedGameBoard === "gameBoard1") {
-      dialog.querySelector(".Winner-name").textContent = "Player 2";
-    }
-    if (finishedGameBoard === "gameBoard2") {
-      dialog.querySelector(".Winner-name").textContent = "Player 1";
-    }
-    dialog.showModal();
-    dialog
-      .querySelector("button")
-      .addEventListener("click", function handler2(e) {
-        clearBoard();
-        gameOver();
-        dialog.close();
-        dialog.querySelector("button").removeEventListener("click", handler2);
-      });
   };
 
   let unalteredGameBoard1;
