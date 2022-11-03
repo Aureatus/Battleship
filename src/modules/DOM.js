@@ -1,13 +1,9 @@
 import generateGrid from "./domMethods/generateGrid";
 import removeAllChildren from "./domMethods/removeAllChildren";
-import shipPlacementInterfaceGenerator from "./domMethods/shipPlacementInterfaceGenerator";
+import clearshipPlacementInterfaceGenerator from "./domMethods/clearShipPlacementInterfaceGenerator";
 
 const domMethods = () => {
   const body = document.body;
-
-  const clearshipPlacementInterfaceGenerator = () => {
-    document.querySelector(".placementInterface").remove();
-  };
 
   const shipPlacement = (
     gameBoard,
