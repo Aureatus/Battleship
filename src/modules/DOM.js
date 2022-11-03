@@ -101,11 +101,12 @@ const domMethods = () => {
     let counter = 0;
     const coordinateForm = document.querySelector(".coordinateForm");
     const DOMgameBoard = document.querySelector(".player1 > .gameboard");
-    let orientation = "horizontal";
+
     DOMgameBoard.addEventListener("dragover", (e) => {
       e.preventDefault();
     });
     DOMgameBoard.addEventListener("drop", (e) => {
+      let orientation = coordinateForm.elements[0].value;
       const gridChildren = e.target.parentElement.children;
       const targetIndex = Array.from(gridChildren).findIndex(
         (elem) => elem === e.target
