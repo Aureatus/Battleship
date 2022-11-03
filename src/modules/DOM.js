@@ -1,13 +1,8 @@
 import generateGrid from "./domMethods/generateGrid";
+import removeAllChildren from "./domMethods/removeAllChildren";
 
 const domMethods = () => {
   const body = document.body;
-
-  const removeAllChildren = (parent) => {
-    while (parent.firstChild) {
-      parent.removeChild(parent.firstChild);
-    }
-  };
 
   const shipPlacementInterfaceGenerator = () => {
     const player1Area = document.querySelector(".player1");
