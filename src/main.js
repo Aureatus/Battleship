@@ -1,11 +1,11 @@
 import "normalize.css";
 import "./style.css";
-import { gameBoardFactory } from "./modules/gameBoard";
-import { player } from "./modules/player";
-import shipPlacement from "./modules/domMethods/shipPlacement";
-import generateGrid from "./modules/domMethods/generateGrid";
-import shipPlacementInterfaceGenerator from "./modules/domMethods/shipPlacementInterfaceGenerator";
-import attackListener from "./modules/domMethods/attackListener";
+import { gameBoardFactory } from "./modules/logic/gameBoard";
+import { player } from "./modules//logic/player";
+import shipPlacement from "./modules/dom/shipPlacement";
+import generateGrid from "./modules/dom/generateGrid";
+import shipPlacementInterfaceGenerator from "./modules/dom/shipPlacementInterfaceGenerator";
+import attackListener from "./modules/dom/attackListener";
 
 const gameOver = () => {
   newGame[0] = gameFactory();
