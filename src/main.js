@@ -4,6 +4,7 @@ import { gameBoardFactory } from "./modules/gameBoard";
 import { player } from "./modules/player";
 import { domMethods } from "./modules/DOM";
 import generateGrid from "./modules/domMethods/generateGrid";
+import shipPlacementInterfaceGenerator from "./modules/domMethods/shipPlacementInterfaceGenerator";
 
 const gameOver = () => {
   newGame[0] = gameFactory();
@@ -31,7 +32,7 @@ const gameFactory = () => {
   player2.placeShipsAI();
   generateGrid(gameBoard1, 0);
   generateGrid(gameBoard2, 1);
-  domMethods().shipPlacementInterfaceGenerator();
+  shipPlacementInterfaceGenerator();
 
   domMethods().shipPlacement(
     gameBoard1,

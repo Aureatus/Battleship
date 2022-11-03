@@ -1,37 +1,9 @@
 import generateGrid from "./domMethods/generateGrid";
 import removeAllChildren from "./domMethods/removeAllChildren";
+import shipPlacementInterfaceGenerator from "./domMethods/shipPlacementInterfaceGenerator";
 
 const domMethods = () => {
   const body = document.body;
-
-  const shipPlacementInterfaceGenerator = () => {
-    const player1Area = document.querySelector(".player1");
-    const placementInterface = document.createElement("div");
-    placementInterface.classList.add("placementInterface");
-    const title = document.createElement("h2");
-    title.textContent = "Place ships";
-    placementInterface.appendChild(title);
-    const currentShip = document.createElement("h3");
-    placementInterface.appendChild(currentShip);
-    const form = document.createElement("form");
-    form.classList.add("coordinateForm");
-    const selectOrientation = document.createElement("select");
-    selectOrientation.classList.add("orientationSelection");
-    const horizontalOption = document.createElement("option");
-    horizontalOption.value = "horizontal";
-    horizontalOption.textContent = "horizontal";
-    const verticalOption = document.createElement("option");
-    verticalOption.value = "vertical";
-    verticalOption.textContent = "vertical";
-    selectOrientation.appendChild(horizontalOption);
-    selectOrientation.appendChild(verticalOption);
-    form.appendChild(selectOrientation);
-    const errorDiv = document.createElement("div");
-    errorDiv.classList.add("errorDiv");
-    form.appendChild(errorDiv);
-    placementInterface.appendChild(form);
-    player1Area.appendChild(placementInterface);
-  };
 
   const clearshipPlacementInterfaceGenerator = () => {
     document.querySelector(".placementInterface").remove();
@@ -254,7 +226,6 @@ const domMethods = () => {
   return {
     attackListener,
     gridChangeRender,
-    shipPlacementInterfaceGenerator,
     shipPlacement,
   };
 };
