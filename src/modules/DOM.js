@@ -1,6 +1,7 @@
 import generateGrid from "./domMethods/generateGrid";
 import removeAllChildren from "./domMethods/removeAllChildren";
 import clearshipPlacementInterfaceGenerator from "./domMethods/clearShipPlacementInterfaceGenerator";
+import clearBoard from "./domMethods/clearBoard";
 
 const domMethods = () => {
   const body = document.body;
@@ -128,13 +129,6 @@ const domMethods = () => {
     const shipLabel = coordinateForm.parentElement.querySelector("h3");
     shipLabel.textContent = "Carrier";
     shipLabel.draggable = true;
-  };
-
-  const clearBoard = () => {
-    const grid1 = document.querySelector("main").children[0].children[0];
-    const grid2 = document.querySelector("main").children[1].children[0];
-    removeAllChildren(grid1);
-    removeAllChildren(grid2);
   };
 
   const gameEndScreen = (gameOver, finishedGameBoard) => {
