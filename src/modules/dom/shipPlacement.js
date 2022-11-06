@@ -114,6 +114,8 @@ const shipPlacement = (
     if (counter === 5) {
       counter = 0;
       clearshipPlacementInterfaceGenerator();
+      generateGrid(gameBoard1, 0);
+      generateGrid(gameBoard2, 1);
       codeToExecute(
         gridForEventListeners,
         gameBoard2,
