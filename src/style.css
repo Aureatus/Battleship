@@ -7,8 +7,6 @@ body {
   width: 100vw;
   height: 100vh;
 
-  background-color: #e6bb87;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,8 +20,6 @@ body {
   grid-template: 1fr 7fr / 1fr;
   justify-content: center;
   align-items: center;
-
-  background-color: #39a0ed;
 }
 
 .container header {
@@ -73,7 +69,7 @@ div.gameboard {
 
 div.gameboard > div {
   border: 0.1rem solid #000;
-  background-color: wheat;
+  background-color: #45a1e7;
 
   display: flex;
   justify-content: center;
