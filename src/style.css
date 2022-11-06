@@ -98,9 +98,16 @@ section.player2 > div.gameboard > div {
 }
 
 div.placementInterface {
+  height: 100vh;
+  width: 100vw;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background-color: white;
   display: grid;
   grid-template: 1fr 1fr 2fr / 1fr;
-  width: 100%;
 
   justify-items: center;
   align-items: center;
