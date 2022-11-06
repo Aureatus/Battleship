@@ -127,7 +127,7 @@ div.placementInterface h3 {
 div.placementInterface .coordinateForm {
   display: grid;
 
-  grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr;
+  grid-template: 1fr / 1fr;
 
   justify-items: center;
   align-items: center;
@@ -143,65 +143,10 @@ div.placementInterface .coordinateForm .orientationSelection {
   border-radius: 10px;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-div.placementInterface .coordinateForm .x-coordinate {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-div.placementInterface .coordinateForm .x-coordinate input {
-  font-family: "Red Hat Mono", monospace;
-  text-align: center;
-  width: 20%;
-  border-radius: 40%;
-  border: 1px solid black;
-}
-div.placementInterface .coordinateForm .x-coordinate label {
-  font-size: calc(0.5rem + 1vw);
-}
-
-div.placementInterface .coordinateForm .y-coordinate {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-div.placementInterface .coordinateForm .y-coordinate input {
-  font-family: "Red Hat Mono", monospace;
-  text-align: center;
-  width: 20%;
-  border-radius: 40%;
-  border: 1px solid black;
-}
-
-div.placementInterface .coordinateForm .y-coordinate label {
-  font-size: calc(0.5rem + 1vw);
-}
-
 div.placementInterface .coordinateForm .errorDiv {
   font-family: "Red Hat Mono", monospace;
   font-size: calc(0.5rem + 1vw);
   text-align: center;
-}
-
-div.placementInterface .coordinateForm input[type="submit"] {
-  width: 40%;
-  height: 100%;
-
-  font-family: "Red Hat Mono", monospace;
-  font-size: calc(0.5rem + 1vw);
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 20px;
 }
 
 dialog {
