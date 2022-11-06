@@ -88,6 +88,10 @@ div.gameboard > div.miss {
   background-color: #4086db;
 }
 
+section.player2 > div.gameboard > div {
+  cursor: pointer;
+}
+
 div.placementInterface {
   display: grid;
   grid-template: 1fr 1fr 2fr / 1fr;
