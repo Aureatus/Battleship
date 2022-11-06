@@ -51,6 +51,8 @@ body {
   height: 100%;
 
   justify-items: center;
+
+  row-gap: 2rem;
 }
 
 .container main section {
