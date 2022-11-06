@@ -61,7 +61,7 @@ body {
 div.gameboard {
   display: grid;
   grid-template: repeat(10, 3.5vw) / repeat(10, 3.5vw);
-  border: 0.5px solid #000;
+  border: 2px solid #32322c;
   width: min-content;
   justify-self: center;
 }
