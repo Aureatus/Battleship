@@ -135,11 +135,12 @@ div.placementInterface .coordinateForm {
   align-items: center;
 
   width: 100%;
+  row-gap: 2rem;
 }
 
 div.placementInterface .coordinateForm .orientationSelection {
   height: 100%;
-  width: 50%;
+  width: 15rem;
   font-family: "Red Hat Mono", monospace;
   background-color: white;
   border-radius: 10px;
