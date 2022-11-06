@@ -77,6 +77,8 @@ div.gameboard > div {
 
   font-family: "Red Hat Mono", monospace;
   font-size: 2rem;
+
+  user-select: none;
 }
 
 div.gameboard > div.hit {
