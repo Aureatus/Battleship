@@ -36,11 +36,11 @@ body {
   margin: 0;
   padding: 0;
 
+  color: #32322c;
+
   font-family: "Red Hat Mono", monospace;
   font-size: calc(1.5rem + 3vw);
-  text-shadow: 1px 1px #c9842e;
-  border: 2px solid salmon;
-  border-radius: 10px;
+  text-shadow: 2px 2px #4c6085;
 }
 
 .container main {
