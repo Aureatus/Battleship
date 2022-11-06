@@ -71,6 +71,8 @@ div.gameboard > div {
   border: 0.1rem solid #000;
   background-color: #45a1e7;
 
+  margin: -1px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,7 +116,6 @@ div.placementInterface {
 
   row-gap: 1rem;
 }
-
 div.placementInterface h2 {
   margin: 0;
   padding: 0;
