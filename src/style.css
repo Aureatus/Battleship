@@ -59,6 +59,8 @@ body {
   display: flex;
   flex-direction: column;
   height: min-content;
+
+  align-items: center;
 }
 
 div.gameboard {
