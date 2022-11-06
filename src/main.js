@@ -9,7 +9,7 @@ import shipPlacementInterfaceGenerator from "./modules/dom/shipPlacementInterfac
 import attackListener from "./modules/dom/attackListener";
 
 const gameOver = () => {
-  newGame[0] = gameFactory();
+  game = gameFactory();
 };
 
 const gameFactory = () => {
@@ -49,7 +49,5 @@ const gameFactory = () => {
   );
 };
 
-const initialGame = gameFactory;
-initialGame();
-
-const newGame = [];
+let game = gameFactory;
+game();
