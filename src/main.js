@@ -34,7 +34,7 @@ const gameFactory = () => {
   player2.placeShipsAI();
   generateGrid(gameBoard1, 0);
   generateGrid(gameBoard2, 1);
-  shipPlacementInterfaceGenerator();
+  shipPlacementInterfaceGenerator(gameBoard1);
 
   shipPlacement(
     gameBoard1,

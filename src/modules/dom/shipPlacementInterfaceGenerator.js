@@ -1,13 +1,15 @@
-const shipPlacementInterfaceGenerator = () => {
-  const player1Area = document.querySelector(".player1");
+import generateGrid from "./generateGrid";
+
+const shipPlacementInterfaceGenerator = (gameboard) => {
+  const main = document.querySelector("main");
   const placementInterface = document.createElement("div");
   placementInterface.classList.add("placementInterface");
-  const title = document.createElement("h2");
-  title.textContent = "Place ships";
-  placementInterface.appendChild(title);
   const gameBoard = document.createElement("div");
   gameBoard.classList.add("gameboard");
   placementInterface.appendChild(gameBoard);
+  const title = document.createElement("h2");
+  title.textContent = "Place ships";
+  placementInterface.appendChild(title);
   const currentShip = document.createElement("h3");
   placementInterface.appendChild(currentShip);
   const form = document.createElement("form");
@@ -27,7 +29,9 @@ const shipPlacementInterfaceGenerator = () => {
   errorDiv.classList.add("errorDiv");
   form.appendChild(errorDiv);
   placementInterface.appendChild(form);
-  player1Area.appendChild(placementInterface);
+  main.appendChild(placementInterface);
+
+  generateGrid(gameboard, 3);
 };
 
 export default shipPlacementInterfaceGenerator;

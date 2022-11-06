@@ -17,7 +17,9 @@ const shipPlacement = (
   let shipLength;
   let counter = 0;
   const coordinateForm = document.querySelector(".coordinateForm");
-  const DOMgameBoard = document.querySelector(".player1 > .gameboard");
+  const DOMgameBoard = document.querySelector(
+    ".placementInterface > .gameboard"
+  );
 
   DOMgameBoard.addEventListener("dragover", (e) => {
     e.preventDefault();
@@ -108,6 +110,7 @@ const shipPlacement = (
     const grid1 = document.querySelector("main").children[0].children[0];
     removeAllChildren(grid1);
     generateGrid(gameBoard, 0);
+    generateGrid(gameBoard, 3);
     if (counter === 5) {
       counter = 0;
       clearshipPlacementInterfaceGenerator();
