@@ -15,18 +15,15 @@ body {
 }
 
 .container {
-  height: min-content;
-  width: 80%;
+  height: 100%;
+  width: 100%;
 
   display: grid;
   grid-template: 1fr 4fr / 1fr;
   justify-content: center;
   align-items: center;
 
-  background-color: #4086db;
-
-  border-radius: 100px;
-  outline: 2px solid #c9842e;
+  background-color: #39a0ed;
 }
 
 .container header {
