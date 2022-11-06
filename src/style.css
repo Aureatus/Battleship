@@ -84,7 +84,7 @@ div.gameboard > div {
   transition: opacity 0.1s ease-out;
 }
 
-section.player2 > div.gameboard > div:hover {
+section.player2 > div.gameboard > div:hover:not(.hit, .miss) {
   opacity: 0.7;
 }
 
