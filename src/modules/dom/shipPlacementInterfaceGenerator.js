@@ -5,6 +5,9 @@ const shipPlacementInterfaceGenerator = () => {
   const title = document.createElement("h2");
   title.textContent = "Place ships";
   placementInterface.appendChild(title);
+  const gameBoard = document.createElement("div");
+  gameBoard.classList.add("gameboard");
+  placementInterface.appendChild(gameBoard);
   const currentShip = document.createElement("h3");
   placementInterface.appendChild(currentShip);
   const form = document.createElement("form");
