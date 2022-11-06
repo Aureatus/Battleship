@@ -247,4 +247,7 @@ div.endGameScreen button {
   .container main {
     grid-template: 1fr / 1fr;
   }
+  .container main section {
+    flex-direction: column-reverse;
+  }
 }
