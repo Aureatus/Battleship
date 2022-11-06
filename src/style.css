@@ -88,10 +88,6 @@ div.gameboard > div.hit {
   background-color: coral;
 }
 
-div.gameboard > div.miss {
-  background-color: #4086db;
-}
-
 section.player2 > div.gameboard > div {
   cursor: pointer;
 }
