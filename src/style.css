@@ -54,7 +54,8 @@ body {
 }
 
 .container main section {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   height: min-content;
 }
 
