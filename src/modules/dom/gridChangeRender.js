@@ -13,7 +13,7 @@ const gridChangeRender = (gameBoard, number, unalteredGameBoard) => {
       }
       if (gameBoard.gameBoardArray[index] === "miss") {
         grid.children[index].classList.add("miss");
-        grid.children[index].innerHTML = "&#215";
+        grid.children[index].innerHTML = "&#8226";
       }
     }
   });
