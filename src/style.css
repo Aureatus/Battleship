@@ -90,7 +90,7 @@ section.player2 > div.gameboard > div:hover:not(.hit, .miss) {
 
 div.gameboard > div.hit {
   font-size: 3rem;
-  background-color: coral;
+  background-color: rgb(253, 99, 82);
 }
 
 section.player2 > div.gameboard > div {
