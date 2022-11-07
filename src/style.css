@@ -109,7 +109,7 @@ div.placementInterface {
 
   background-color: white;
   display: grid;
-  grid-template: 1fr 1fr 2fr / 1fr;
+  grid-template: 1fr 1fr 1fr 2fr / 1fr;
 
   justify-items: center;
   align-items: center;
@@ -127,6 +127,30 @@ div.placementInterface h2 {
   justify-self: center;
   align-self: center;
   text-align: center;
+}
+
+div.placementInterface .shipVisual {
+  display: flex;
+  justify-content: center;
+  border: 0.2rem solid #32322c;
+  justify-self: center;
+  box-sizing: border-box;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+div.placementInterface .shipVisual .shipPiece {
+  height: auto;
+  height: 3rem;
+  width: 3rem;
+
+  border: 0.1rem solid #32322c;
+  margin: -1px;
+
+  cursor: pointer;
+  user-select: none;
 }
 
 div.placementInterface h3 {

@@ -1,6 +1,7 @@
 import generateGrid from "./generateGrid";
 import removeAllChildren from "./removeAllChildren";
 import clearshipPlacementInterfaceGenerator from "./clearShipPlacementInterfaceGenerator";
+import createShipVisual from "./createShipVisual";
 
 const shipPlacement = (
   gameBoard,
@@ -13,47 +14,43 @@ const shipPlacement = (
   isGameOver,
   gameOver
 ) => {
-  let shipLetter;
-  let shipLength;
+  let shipLetter = "C";
+  let shipLength = 5;
   let counter = 0;
   const coordinateForm = document.querySelector(".coordinateForm");
   const DOMgameBoard = document.querySelector(
     ".placementInterface > .gameboard"
   );
 
+  let orientation = coordinateForm.elements[0].value;
+
+  const shipLabel = coordinateForm.parentElement.querySelector("h3");
+  const shipVisual = document.querySelector(".shipVisual");
+  shipLabel.textContent = "Carrier";
+  createShipVisual(5, document.querySelector(".shipVisual"), orientation);
+
+  shipVisual.draggable = true;
+
+  coordinateForm.elements[0].addEventListener("change", (e) => {
+    e.preventDefault();
+    orientation = coordinateForm.elements[0].value;
+    console.log(shipLength);
+    createShipVisual(
+      shipLength,
+      document.querySelector(".shipVisual"),
+      orientation
+    );
+  });
+
   DOMgameBoard.addEventListener("dragover", (e) => {
     e.preventDefault();
   });
   DOMgameBoard.addEventListener("drop", (e) => {
-    let orientation = coordinateForm.elements[0].value;
+    orientation = coordinateForm.elements[0].value;
     const gridChildren = e.target.parentElement.children;
     const targetIndex = Array.from(gridChildren).findIndex(
       (elem) => elem === e.target
     );
-    switch (counter) {
-      case 0:
-        shipLetter = "C";
-        shipLength = 5;
-        break;
-      case 1:
-        shipLetter = "B";
-        shipLength = 4;
-        break;
-      case 2:
-        shipLetter = "D";
-        shipLength = 3;
-        break;
-      case 3:
-        shipLetter = "S";
-        shipLength = 3;
-        break;
-      case 4:
-        shipLetter = "P";
-        shipLength = 2;
-        break;
-      default:
-        break;
-    }
     if (orientation === "horizontal") {
       let currentTenth = Math.floor(targetIndex / 10) * 10;
       if (targetIndex + shipLength > currentTenth + 10) {
@@ -84,18 +81,50 @@ const shipPlacement = (
         }
       }
     }
+
+    gameBoard.placeShip(targetIndex, shipLength, shipLetter, orientation);
+
+    switch (counter) {
+      case 0:
+        shipLetter = "B";
+        shipLength = 4;
+        break;
+      case 1:
+        shipLetter = "D";
+        shipLength = 3;
+        break;
+      case 2:
+        shipLetter = "S";
+        shipLength = 3;
+        break;
+      case 3:
+        shipLetter = "P";
+        shipLength = 2;
+        break;
+      default:
+        break;
+    }
+
     switch (counter) {
       case 0:
         shipLabel.textContent = "BattleShip";
+        createShipVisual(4, document.querySelector(".shipVisual"), orientation);
+
         break;
       case 1:
         shipLabel.textContent = "Destroyer";
+        createShipVisual(3, document.querySelector(".shipVisual"), orientation);
+
         break;
       case 2:
         shipLabel.textContent = "Submarine";
+        createShipVisual(3, document.querySelector(".shipVisual"), orientation);
+
         break;
       case 3:
         shipLabel.textContent = "Patrol Boat";
+        createShipVisual(2, document.querySelector(".shipVisual"), orientation);
+
         break;
       case 4:
         shipLabel.textContent = "";
@@ -103,7 +132,6 @@ const shipPlacement = (
       default:
         break;
     }
-    gameBoard.placeShip(targetIndex, shipLength, shipLetter, orientation);
 
     counter++;
     document.querySelector(".errorDiv").textContent = "";
@@ -127,9 +155,6 @@ const shipPlacement = (
       );
     }
   });
-  const shipLabel = coordinateForm.parentElement.querySelector("h3");
-  shipLabel.textContent = "Carrier";
-  shipLabel.draggable = true;
 };
 
 export default shipPlacement;
