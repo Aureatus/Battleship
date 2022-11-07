@@ -17,6 +17,7 @@ const createShipVisual = (length, parent, orientation) => {
   for (let i = 0; i < length; i++) {
     const square = document.createElement("div");
     square.classList.add("shipPiece");
+    square.dataset.index = i;
     parent.appendChild(square);
   }
 };
