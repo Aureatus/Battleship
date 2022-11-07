@@ -17,6 +17,12 @@ const shipPlacement = (
   let shipLetter = "C";
   let shipLength = 5;
   let counter = 0;
+  let draggedShipIndex;
+
+  const getDraggedShipIndex = (e) => {
+    draggedShipIndex = Number(e.target.dataset.index);
+  };
+
   const coordinateForm = document.querySelector(".coordinateForm");
   const DOMgameBoard = document.querySelector(
     ".placementInterface > .gameboard"
@@ -27,19 +33,16 @@ const shipPlacement = (
   const shipLabel = coordinateForm.parentElement.querySelector("h3");
   const shipVisual = document.querySelector(".shipVisual");
   shipLabel.textContent = "Carrier";
-  createShipVisual(5, document.querySelector(".shipVisual"), orientation);
+  createShipVisual(5, shipVisual, orientation);
+  shipVisual.addEventListener("mousedown", getDraggedShipIndex);
 
   shipVisual.draggable = true;
 
   coordinateForm.elements[0].addEventListener("change", (e) => {
     e.preventDefault();
     orientation = coordinateForm.elements[0].value;
-    console.log(shipLength);
-    createShipVisual(
-      shipLength,
-      document.querySelector(".shipVisual"),
-      orientation
-    );
+    createShipVisual(shipLength, shipVisual, orientation);
+    shipVisual.addEventListener("mousedown", getDraggedShipIndex);
   });
 
   DOMgameBoard.addEventListener("dragover", (e) => {
@@ -48,9 +51,17 @@ const shipPlacement = (
   DOMgameBoard.addEventListener("drop", (e) => {
     orientation = coordinateForm.elements[0].value;
     const gridChildren = e.target.parentElement.children;
-    const targetIndex = Array.from(gridChildren).findIndex(
+    let targetIndex = Array.from(gridChildren).findIndex(
       (elem) => elem === e.target
     );
+
+    if (orientation === "horizontal") {
+      targetIndex -= draggedShipIndex;
+    }
+
+    if (orientation === "vertical") {
+      targetIndex -= draggedShipIndex * 10;
+    }
     if (orientation === "horizontal") {
       let currentTenth = Math.floor(targetIndex / 10) * 10;
       if (targetIndex + shipLength > currentTenth + 10) {
@@ -108,22 +119,26 @@ const shipPlacement = (
     switch (counter) {
       case 0:
         shipLabel.textContent = "BattleShip";
-        createShipVisual(4, document.querySelector(".shipVisual"), orientation);
+        createShipVisual(4, shipVisual, orientation);
+        shipVisual.addEventListener("mousedown", getDraggedShipIndex);
 
         break;
       case 1:
         shipLabel.textContent = "Destroyer";
-        createShipVisual(3, document.querySelector(".shipVisual"), orientation);
+        createShipVisual(3, shipVisual, orientation);
+        shipVisual.addEventListener("mousedown", getDraggedShipIndex);
 
         break;
       case 2:
         shipLabel.textContent = "Submarine";
-        createShipVisual(3, document.querySelector(".shipVisual"), orientation);
+        createShipVisual(3, shipVisual, orientation);
+        shipVisual.addEventListener("mousedown", getDraggedShipIndex);
 
         break;
       case 3:
         shipLabel.textContent = "Patrol Boat";
-        createShipVisual(2, document.querySelector(".shipVisual"), orientation);
+        createShipVisual(2, shipVisual, orientation);
+        shipVisual.addEventListener("mousedown", getDraggedShipIndex);
 
         break;
       case 4:
