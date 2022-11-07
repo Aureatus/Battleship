@@ -132,7 +132,6 @@ div.placementInterface h2 {
 div.placementInterface .shipVisual {
   display: flex;
   justify-content: center;
-  border: 0.2rem solid #32322c;
   justify-self: center;
   box-sizing: border-box;
 }
@@ -142,11 +141,13 @@ div.placementInterface .shipVisual {
 }
 
 div.placementInterface .shipVisual .shipPiece {
-  height: auto;
-  height: 3rem;
-  width: 3rem;
-
+  height: 3.2rem;
+  width: 3.2rem;
+  max-width: 50px;
+  max-height: 50px;
+  background-color: gray;
   border: 0.1rem solid #32322c;
+  box-sizing: border-box;
   margin: -1px;
 
   cursor: pointer;
