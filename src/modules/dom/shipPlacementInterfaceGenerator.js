@@ -1,3 +1,4 @@
+import createShipVisual from "./createShipVisual";
 import generateGrid from "./generateGrid";
 
 const shipPlacementInterfaceGenerator = (gameboard) => {
@@ -10,9 +11,13 @@ const shipPlacementInterfaceGenerator = (gameboard) => {
   const title = document.createElement("h2");
   title.textContent = "Place ships";
   placementInterface.appendChild(title);
+  const ShipVisualContainer = document.createElement("div");
+  ShipVisualContainer.classList.add("shipVisualContainer");
   const currentShipVisual = document.createElement("div");
   currentShipVisual.classList.add("shipVisual");
-  placementInterface.appendChild(currentShipVisual);
+  ShipVisualContainer.appendChild(currentShipVisual);
+
+  placementInterface.appendChild(ShipVisualContainer);
   const currentShip = document.createElement("h3");
   placementInterface.appendChild(currentShip);
   const form = document.createElement("form");
