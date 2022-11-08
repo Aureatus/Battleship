@@ -108,8 +108,8 @@ div.placementInterface {
   left: 0;
 
   background-color: white;
-  display: grid;
-  grid-template: 1fr 1fr 1fr 2fr / 1fr;
+  display: flex;
+  flex-direction: column;
 
   justify-items: center;
   align-items: center;
@@ -129,9 +129,17 @@ div.placementInterface h2 {
   text-align: center;
 }
 
+div.placementInterface .shipVisualContainer {
+  height: 12.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 div.placementInterface .shipVisual {
   display: flex;
   justify-content: center;
+  align-items: center;
   justify-self: center;
   box-sizing: border-box;
 }
@@ -175,7 +183,7 @@ div.placementInterface .coordinateForm {
   align-items: center;
 
   width: 100%;
-  row-gap: 2rem;
+  row-gap: 1rem;
 }
 
 div.placementInterface .coordinateForm .orientationSelection {
