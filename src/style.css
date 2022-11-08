@@ -234,18 +234,48 @@ div.endGameScreen button {
   border-radius: 20px;
 }
 
+@media (min-width: 2560px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 912px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 820px) {
+  html {
+    font-size: 13px;
+  }
+}
+
 @media (max-width: 768px) {
   html {
     font-size: 12px;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 540px) {
   html {
     font-size: 10px;
   }
   .container main {
-    grid-template: 1fr / 1fr;
+    grid-template: 1fr 1fr/ 1fr;
+  }
+  .container main section {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 300px) {
+  html {
+    font-size: 9px;
+  }
+  .container main {
+    grid-template: 1fr/ 1fr;
   }
   .container main section {
     flex-direction: column-reverse;
