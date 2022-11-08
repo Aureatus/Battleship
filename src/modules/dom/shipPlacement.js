@@ -35,6 +35,7 @@ const shipPlacement = (
   shipLabel.textContent = "Carrier";
   createShipVisual(5, shipVisual, orientation);
   shipVisual.addEventListener("mousedown", getDraggedShipIndex);
+  shipVisual.addEventListener("touchstart", getDraggedShipIndex);
 
   shipVisual.draggable = true;
 
@@ -44,6 +45,8 @@ const shipPlacement = (
     createShipVisual(shipLength, shipVisual, orientation);
     shipVisual.addEventListener("mousedown", getDraggedShipIndex);
   });
+
+  DOMgameBoard.addEventListener("dragenter", (e) => e.preventDefault());
 
   DOMgameBoard.addEventListener("dragover", (e) => {
     e.preventDefault();
