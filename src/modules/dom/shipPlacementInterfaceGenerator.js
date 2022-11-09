@@ -9,7 +9,7 @@ const shipPlacementInterfaceGenerator = (gameboard) => {
   gameBoard.classList.add("gameboard");
   placementInterface.appendChild(gameBoard);
   const title = document.createElement("h2");
-  title.textContent = "Place ships";
+  title.textContent = "Place ships (Drag and drop)";
   placementInterface.appendChild(title);
   const ShipVisualContainer = document.createElement("div");
   ShipVisualContainer.classList.add("shipVisualContainer");
