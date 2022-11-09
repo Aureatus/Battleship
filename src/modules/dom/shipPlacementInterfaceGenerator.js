@@ -17,7 +17,9 @@ const shipPlacementInterfaceGenerator = (gameboard) => {
   currentShipVisual.classList.add("shipVisual");
   ShipVisualContainer.appendChild(currentShipVisual);
 
-  placementInterface.appendChild(ShipVisualContainer);
+  const div = document.createElement("div");
+  div.classList.add("shipAndFormContainer");
+  div.appendChild(ShipVisualContainer);
   const currentShip = document.createElement("h3");
   placementInterface.appendChild(currentShip);
   const form = document.createElement("form");
@@ -46,8 +48,10 @@ const shipPlacementInterfaceGenerator = (gameboard) => {
   form.append(fieldset);
   const errorDiv = document.createElement("div");
   errorDiv.classList.add("errorDiv");
-  form.appendChild(errorDiv);
-  placementInterface.appendChild(form);
+  div.appendChild(form);
+  placementInterface.appendChild(div);
+  placementInterface.appendChild(errorDiv);
+
   main.appendChild(placementInterface);
 
   generateGrid(gameboard, 3);

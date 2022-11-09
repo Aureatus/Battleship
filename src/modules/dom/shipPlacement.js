@@ -28,9 +28,10 @@ const shipPlacement = (
     ".placementInterface > .gameboard"
   );
 
-  let orientation = coordinateForm.elements[0].value;
+  let orientation = "horizontal";
 
-  const shipLabel = coordinateForm.parentElement.querySelector("h3");
+  const shipLabel =
+    coordinateForm.parentElement.parentElement.querySelector("h3");
   const shipVisual = document.querySelector(".shipVisual");
   shipLabel.textContent = "Carrier";
   createShipVisual(5, shipVisual, orientation);
