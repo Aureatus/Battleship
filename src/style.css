@@ -177,7 +177,7 @@ div.placementInterface h3 {
 div.placementInterface .coordinateForm {
   display: grid;
 
-  grid-template: 1fr / 1fr;
+  grid-template: 1fr 1fr / 1fr;
 
   justify-items: center;
   align-items: center;

@@ -39,9 +39,9 @@ const shipPlacement = (
 
   shipVisual.draggable = true;
 
-  coordinateForm.elements[0].addEventListener("change", (e) => {
+  coordinateForm.addEventListener("change", (e) => {
     e.preventDefault();
-    orientation = coordinateForm.elements[0].value;
+    orientation = e.target.value;
     createShipVisual(shipLength, shipVisual, orientation);
     shipVisual.addEventListener("mousedown", getDraggedShipIndex);
   });
@@ -52,7 +52,6 @@ const shipPlacement = (
     e.preventDefault();
   });
   DOMgameBoard.addEventListener("drop", (e) => {
-    orientation = coordinateForm.elements[0].value;
     const gridChildren = e.target.parentElement.children;
     let targetIndex = Array.from(gridChildren).findIndex(
       (elem) => elem === e.target
