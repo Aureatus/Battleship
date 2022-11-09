@@ -1,6 +1,6 @@
 # Battleship
 
-## [Live Link](https://zanyalex.github.io/Battleship/)
+## [Live Link](https://aureatus.github.io/Battleship/)
 
 
 ## Purpose
