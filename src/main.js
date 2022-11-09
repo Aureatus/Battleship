@@ -5,7 +5,6 @@ import "./style.css";
 import gameBoardFactory from "./modules/logic/gameBoard";
 import { player } from "./modules//logic/player";
 import shipPlacement from "./modules/dom/shipPlacement";
-import generateGrid from "./modules/dom/generateGrid";
 import shipPlacementInterfaceGenerator from "./modules/dom/shipPlacementInterfaceGenerator";
 import attackListener from "./modules/dom/attackListener";
 
