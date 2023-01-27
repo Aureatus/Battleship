@@ -1,47 +1,52 @@
+
 # Battleship
 
-This is a take on the post 2002 version of the classic game Battleship.
+This is a take on the post 2002 version of the classic game Battleship, created for the odin project's battleship project, adhering to their [specification](https://www.theodinproject.com/lessons/node-path-javascript-battleship).
 
-The specification followed for this project can be found [here.](https://www.theodinproject.com/lessons/node-path-javascript-battleship)
-
-[Live Link](https://aureatus.github.io/Battleship/)
+## Table of Contents
+* [Features](#features)
+* [Tech stack](#tech-stack)
+* [Run locally](#run-locally)
 
 ## Features
-
 - A semi-intelligent AI opponent to play against.
+  - Hits adjacent tiles if the last one was successful.
 - Drag and drop placement of ships.
-- Well rounded, inoffensive design.
+- Responsive design.
 
+## Tech Stack
+HTML, CSS, JavaScript, Jest, Webpack
 
-## Technologies used
-- HTML
-- CSS
-- JavaScript
-- Webpack
+## Run Locally
 
-## Purpose
+Clone the project
 
-This project was my first endeavour into unit testing in a project, so making sure I was testing sufficiently and wisely was an important aim. Given the focus on unit testing, I had to make sure I kept the logic and DOM manipulation as separate as possible, which I managed to uphold well. Alongside this, I focused on planning this project more thoroughly than those I had done before, given it's increase in complexity.
-
-## How to run locally
-Clone the repository with
-```console
-git clone git@github.com:Aureatus/Battleship.git
+```bash
+  git clone https://github.com/Aureatus/Battleship.git
 ```
-Run
-```console
-npm install
+
+Go to the project directory
+
+```bash
+  cd Battleship
 ```
-to install dependencies,
-```console
-npm run build
+
+Install dependencies
+
+```bash
+  npm install
 ```
-to create a production build,
+
+create a production build
+
+```bash
+  npm run build
+```
+
 then open dist/index.html
 
-Alternatively, you can run 
-```console
-npm run serve
-```
-if you wish to run the dev environment.
+Or run the dev environment
 
+```bash
+  npm run serve
+```
