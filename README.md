@@ -13,6 +13,7 @@ This is a take on the post 2002 version of the classic game Battleship, created 
   - Hits adjacent tiles if the last one was successful.
 - Drag and drop placement of ships.
 - Responsive design.
+- Unit tests for logical modules `gameboard`, `player` and `ship`.
 
 ## Tech Stack
 HTML, CSS, JavaScript, Jest, Webpack
